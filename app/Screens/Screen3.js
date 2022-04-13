@@ -4,7 +4,7 @@ import AppButton from '../Components/AppButton'
 import AppColors from '../config/AppColors';
 import image3 from '../../assets/M3.png';
 import AppButtonSecondary from '../Components/AppButtonSecondary';
-
+import Pagination from '../Components/Pagination';
 
 function Screen3({navigation, route}) {
     return (
@@ -12,10 +12,12 @@ function Screen3({navigation, route}) {
         <Image source={image3} style={{ width: 298, height: 214 }} /> 
         <Text style={styles.text}>Relive the best moments</Text>
         <View><Text style={{width: 305, textAlign: 'center', color: '#667085',marginTop:10,}}>We help you Bring back your happiest memories from the past</Text></View>
-        
+        <View style={{height:90,}} >
+        <Pagination />
         <View style={{flexDirection:'row'}}>
-       <AppButtonSecondary title="Skip"/>
-       <AppButton title="Continue" onPress={(() => navigation.navigate('RegisterScreen'))}/>
+       <AppButtonSecondary title="Skip" onPress={(() => navigation.navigate('RegisterScreen'))}/>
+       <AppButton title="Continue" width="150" onPress={(() => navigation.navigate('RegisterScreen'))}/>
+       </View>
        </View>
        </View>
     );

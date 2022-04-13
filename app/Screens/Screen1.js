@@ -4,6 +4,8 @@ import AppButton from '../Components/AppButton';
 import AppButtonSecondary from '../Components/AppButtonSecondary';
 import AppColors from '../config/AppColors';
 import image1 from '../../assets/M1.png';
+import Dots from 'react-native-dots-pagination';
+import Pagination from '../Components/Pagination';
 
 
 function Screen1({navigation, route}) {
@@ -12,9 +14,13 @@ function Screen1({navigation, route}) {
         <Image source={image1} style={{ width: 300, height: 214}} /> 
         <Text style={styles.text}>Has got some moments? </Text>
         <View><Text style={{width: 305, textAlign: 'center', color: '#667085'}}>Upload your moments on our app and we'll remind you of those moments</Text></View>
+       
+        <View style={{height:90,}} >
+        <Pagination />
         <View style={{flexDirection:'row'}}>
-       <AppButtonSecondary title="Skip"/>
-       <AppButton title="Continue" onPress={(() => navigation.navigate('Screen2'))}/>
+       <AppButtonSecondary title="Skip" onPress={(() => navigation.navigate('RegisterScreen'))}/>
+       <AppButton title="Continue" width="150" onPress={(() => navigation.navigate('Screen2'))}/>
+       </View>
        </View>
        </View>
     );

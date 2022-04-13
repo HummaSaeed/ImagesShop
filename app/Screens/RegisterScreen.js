@@ -7,6 +7,7 @@ import AppButton from '../Components/AppButton';
 import AppColors from '../config/AppColors';
 import AppScreen from '../Components/AppScreen';
 import AppTextInput from '../Components/AppTextInput'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 function RegisterScreen({navigation}) {
@@ -47,12 +48,19 @@ function RegisterScreen({navigation}) {
                         textContentType="password"
                         onChangeText = {userInputPassword => setPassword(userInputPassword)}
                         />
-                </View> 
-                <AppButton title="Register" onPress={(() => navigation.navigate('LoginScreen'))}/>
-               <View style={{flexDirection: 'row'}}>
+                        <TouchableOpacity onPress={(() => navigation.navigate('LoginScreen'))}>
+                            <View style={[styles.button,]}>
+                                <Text style={styles.textbutton}>
+                                    Sign Up
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
+               <View style={{flexDirection: 'row', justifyContent:'center'}}>
                 <Text>Have an account? </Text>
                 <Text style={{color:'#F76631'}}>Log in</Text>
                 </View>
+                </View> 
+               
 
         </AppScreen>
     );
@@ -74,6 +82,20 @@ const styles = StyleSheet.create({
     text:{
         fontSize:12,
     },
+    textbutton:{
+        color: AppColors.white,
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    button:{
+        backgroundColor: AppColors.primaryColor,
+        borderRadius: 6,
+        width: 300,
+        padding: 15,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin:5,
+    }, 
 })
 
 export default RegisterScreen;

@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     },
     textInput:{
         fontSize:16,
-        fontFamily: Platform.OS === 'android' ? "monospace" : "Avenir-Roman",
+        fontFamily: Platform.OS === 'android' ? "sans-serif" : "Avenir-Roman",
         color:'#000',
         marginLeft: 10,
         flex:1,

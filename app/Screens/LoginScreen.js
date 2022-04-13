@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, Text} from 'react-native';
+import { View, StyleSheet, TextInput, Text, Image} from 'react-native';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
+import Memories1 from '../../assets/Memories1.png'
 
 
 import AppButton from '../Components/AppButton';
@@ -11,6 +12,8 @@ import AppScreen from '../Components/AppScreen'
 import AppTextInput from '../Components/AppTextInput'
 import AppText from '../Components/AppText'
 import DataManager from '../config/DataManager';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
 
 
 const schema = Yup.object().shape(
@@ -58,13 +61,10 @@ function LoginScreen({navigation}) {
 
     return (
         <AppScreen style={styles.container}>
-                {/* <View style={styles.welcomeContainer}>
-                    <MaterialCommunityIcons
-                        name="library" 
-                        size={60}
-                        color={AppColors.primaryColor}/>
-                </View> */}
-                 <View><Text style={{fontWeight: 'bold', fontSize:20, marginTop:100, width:150}}>Welcome Back to Login</Text></View>
+                <View style={{backgroundColor:'#42C2FF33', width: 450, height: 319,  justifyContent: 'center'}}>
+                    <Image source={Memories1} style={{ width: 250, height: 242, marginLeft: 50, marginTop:10}}/>
+                </View>
+                 <View style={{marginLeft:20}}><Text style={{fontWeight: 'bold', fontSize:20, marginTop:30, width:150}}>Welcome Back to Login</Text></View>
                 <Formik
                     initialValues={{email:'', password:'',}}
                     onSubmit = {(values, {resetForm})=> {
@@ -93,7 +93,8 @@ function LoginScreen({navigation}) {
                     >
                 {({values, handleChange, handleSubmit, errors, setFieldTouched, touched})=> (
                     <>
-                    <View style={styles.textInputContainer}>             
+                    <View style={styles.textInputContainer}>   
+                    <Text>Username</Text>          
                     <AppTextInput
                         name="emailField"
                         autoCapitalize="none"
@@ -107,6 +108,7 @@ function LoginScreen({navigation}) {
                         onChangeText = {handleChange("email")}
                         />
                     {touched.email && <AppText style={{color:"red", fontSize:16}}>{errors.email}</AppText>}
+                    <Text>Password</Text>
                     <AppTextInput
                         autoCapitalize="none"
                         autoCorrect={false}
@@ -119,12 +121,19 @@ function LoginScreen({navigation}) {
                         onChangeText = {handleChange("password")}
                         />
                     {touched.password && <AppText style={{color:"red", fontSize:16}}>{errors.password}</AppText>}
-                </View> 
-                <AppButton title="Login" onPress={(() => navigation.navigate('Screen1'))}/>
-                <View style={{flexDirection: 'row'}}>
+                    <TouchableOpacity onPress={(() => navigation.navigate('Screen5'))}>
+                            <View style={[styles.button,]}>
+                                <Text style={styles.textbutton}>
+                                    Log In
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
+                <View style={{flexDirection: 'row', justifyContent:'center'}}>
                 <Text>Don't have Account </Text>
                 <Text style={{color:'#F76631'}}>Sign up</Text>
                 </View>
+                </View> 
+                
 
                     </>
                 )}
@@ -136,7 +145,7 @@ function LoginScreen({navigation}) {
 
 const styles = StyleSheet.create({
     container:{
-        padding:20,
+        // padding:20,
         // backgroundColor:AppColors.otherColor,
         marginTop:0,
     },
@@ -146,9 +155,24 @@ const styles = StyleSheet.create({
         marginTop: 50,
     }, 
     textInputContainer:{
-        marginVertical:50,
+        marginVertical:10,
+        marginLeft:20
 
-    }
+    },
+    textbutton:{
+        color: AppColors.white,
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    button:{
+        backgroundColor: AppColors.primaryColor,
+        borderRadius: 6,
+        width: 300,
+        padding: 15,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin:5,
+    }, 
 
 })
 

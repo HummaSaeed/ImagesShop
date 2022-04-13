@@ -8,6 +8,7 @@ import Screen3 from '../Screens/Screen3';
 import RegisterScreen from '../Screens/RegisterScreen';
 import LoginScreen from '../Screens/LoginScreen';
 import HomeScreen from '../app/Screens/Home'
+import Screen5 from '../Screens/Screen5'
 const AppStack =  createStackNavigator();
 
 
@@ -18,7 +19,7 @@ const AuthNavigator = () => (
         <AppStack.Screen name="Screen3" component={Screen3}/>
         <AppStack.Screen name="RegisterScreen" component={RegisterScreen}/>
         <AppStack.Screen name="LoginScreen" component={LoginScreen}/>
- 
+        <AppStack.Screen name="Screen5" component={Screen5}/>
     </AppStack.Navigator>
 )
 
