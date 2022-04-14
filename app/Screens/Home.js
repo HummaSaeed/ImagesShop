@@ -77,7 +77,8 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 0,
         padding: '3%',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        zIndex: 0
 
     },
     Categoriese: {
