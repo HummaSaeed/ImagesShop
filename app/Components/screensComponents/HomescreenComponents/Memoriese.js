@@ -51,7 +51,7 @@ function Memoriese() {
         <View style={styles.findmemoriese}>
                 <View style={styles.findmemoriese_top}>
                     <View style={styles.findmemoriese_top_left}>
-                        <Text>Find Memoriese With Friends</Text>
+                        <Text style={{fontWeight: 'bold'}}>Find Memoriese With Friends</Text>
                     </View>
                     <View style={styles.findmemoriese_top_right}>
                         <Text style={{color: '#F76631'}}>see all</Text>

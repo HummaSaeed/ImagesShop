@@ -33,7 +33,7 @@ const initialImagesCategoriese = [
 ]
 
 
-function HomeScreen() {
+function HomeScreen({route, navigation}) {
 
     const [Categoriesearray, setCategoriesearray] = useState(initialImagesCategoriese);
 
@@ -42,7 +42,7 @@ function HomeScreen() {
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={styles.container}>
         
-            <Topbar />
+            <Topbar navigation={navigation}/>
             <View style={styles.Categoriese}>
                 <FlatList
                     data={Categoriesearray}

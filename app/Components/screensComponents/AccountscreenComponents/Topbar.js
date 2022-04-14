@@ -1,83 +1,96 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image} from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 
-import logo from '../../icons/logo.png'
+import logo from '../../../../assets/logo.jpeg'
 
 import { Icon, withBadge } from 'react-native-elements'
-import { TouchableOpacity } from 'react-native-web';
 
 
 
-function Topbar() {
+function Topbar({navigation}) {
     return (
         <View style={styles.Topbar}>
-            <View style={styles.moveback}>
-            <Icon
-                            name="stepforward"
-                            type="antdesign"
-                            color={'black'}
-                            size={22}
+            <TouchableOpacity style={styles.moveback} onPress={() => navigation.goBack()}>
+                <Icon
+                    name="left"
+                    type="antdesign"
+                    color={'black'}
+                    size={15}
 
-                        />
-            </View>
+                />
+            </TouchableOpacity>
             <View style={styles.Topbar_bottom}>
-            <View style={styles.Topbar_left}>
-                <View style={styles.logo}>
-                <Image style={styles.Logo} source={logo} />
+                <View style={styles.Topbar_left}>
+                    <View style={styles.Logo}>
+                        <Image style={styles.Logo} source={logo} />
+
+                    </View>
+                    <View style={styles.text}>
+                        <Text style={{ fontWeight: 'bold' }}>Robert Fox</Text>
+                        <Text>Joined 16 March 2021</Text>
+                    </View>
 
                 </View>
-                <View style={styles.text}>
-                <Text>Robert Fox</Text>
-                <Text>Joined 16 March 2021</Text>
+                <View style={styles.Topbar_right}>
+                    <TouchableOpacity style={styles.Editbutton}>
+                        <Text style={{color: 'white'}}>Edit</Text>
+                    </TouchableOpacity>
                 </View>
-                
             </View>
-            <View style={styles.Topbar_right}>
-                <TouchableOpacity style={styles.Editbutton}>
 
-                </TouchableOpacity>
-            </View>
-            </View>
-          
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     Topbar: {
-        height: '10%',
+        height: '20%',
         width: '100%',
         marginTop: '5%',
-        backgroundColor: 'pink'
-    },
-  
-    Topbar_left: {
-        width: '55%',
-        height: '100%',
-        alignItems: 'flex-start',
-        justifyContent: 'space-evenly',
-        flexDirection: 'row',
-        alignItems: 'center'
+        justifyContent: 'center',
+        padding: '3%',
 
     },
-    Editbutton : {
-backgroundColor: 'red',
-width: '40%',
-height: '20%'
+
+    Topbar_left: {
+        width: '50%',
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        flexDirection: 'row',
+
     },
-    Topbar_bottom : {
-height: '80%',
-width: '100%',
-flexDirection: 'row'
+    Editbutton: {
+        backgroundColor: 'red',
+        width: '40%',
+        height: '40%',
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
-    moveback : {
+    Topbar_bottom: {
+        marginTop: '5%',
+        height: '80%',
         width: '100%',
-        height: '20%',
-        alignItems: 'flex-start'
+        flexDirection: 'row',
+
     },
-    logo :{
-        height: '65%',
-        width: '40.8%',
+    text: {
+        marginLeft: '-18%'
+    },
+    moveback: {
+        width: '7%',
+        height: '23%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 30,
+        borderWidth: 1.5,
+        borderColor: 'black'
+
+    },
+    logo: {
+        height: '100%',
+        width: '100%',
     },
     Topbar_right: {
         width: '45%',
@@ -87,10 +100,11 @@ flexDirection: 'row'
 
     },
     Logo: {
-        height: '100%',
-        width: '100%',
+        height: '85%',
+        width: '60%',
         borderRadius: 30,
         overflow: 'hidden'
+
     },
 
 })

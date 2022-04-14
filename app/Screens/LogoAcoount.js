@@ -11,13 +11,13 @@ import Topbar from '../Components/screensComponents/AccountscreenComponents/Topb
 
 
 
-function Account() {
+function LogoAccount({navigation}) {
 
 
     return (
         <View style={styles.container}>
         
-            <Topbar />
+            <Topbar navigation={navigation} />
             <Mainbody />
             <Memoriese />
 
@@ -63,4 +63,4 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
     }
 })
-export default Account;
+export default LogoAccount;

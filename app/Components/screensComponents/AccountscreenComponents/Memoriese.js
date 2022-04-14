@@ -1,133 +1,91 @@
-import React, {useState} from 'react';
-import { View, StyleSheet, Text,Image, FlatList } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, Text, Image, FlatList } from 'react-native';
+import { Icon, withBadge } from 'react-native-elements'
 
-import miniimage from '../../icons/miniimage.jpeg'
-import left from '../../icons/left.png'
-import mainimage from '../../icons/mainimage.jpg'
-
-const initialmemoriesewithfriends = [
-    {
-        id: 1,
-        image: miniimage
-    },
-    {
-        id: 2,
-        image: miniimage
-    },
-    {
-        id: 3,
-        image: miniimage
-    },
-    {
-        id: 4,
-        image: miniimage
-    },
-    {
-        id: 5,
-        image: miniimage
-    },
-    {
-        id: 7,
-        image: miniimage
-    },
-    {
-        id: 8,
-        image: miniimage
-    },
-    {
-        id: 9,
-        image: miniimage
-    },
-
-]
-
+import mail from '../../../../assets/mail.png'
+import contact from '../../../../assets/contact.png'
+import settings from '../../../../assets/settings.png'
 
 
 function Memoriese() {
-    
-    const [memoriesearray, setmemoriesearray] = useState(initialmemoriesewithfriends);
+
 
     return (
-        <View style={styles.findmemoriese}>
-                <View style={styles.findmemoriese_top}>
-                    <View style={styles.findmemoriese_top_left}>
-                        <Text>Find Memoriese With Friends</Text>
-                    </View>
-                    <View style={styles.findmemoriese_top_right}>
-                        <Text>see all</Text>
-                        <Image source={left} />
-                    </View>
+        <View style={styles.container}>
+            <View style={styles.containerTop}>
+                <View style={styles.containeritems}>
+                    <Image source={mail} />
+                    <Text style={{ color: 'white', marginLeft: '3%' }}>anees2017@gmail.com</Text>
                 </View>
-                <View style={styles.findmemoriese_flatlist}>
-                    <FlatList
-                        data={memoriesearray}
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        keyExtractor={Categoriesearray => Categoriesearray.id.toString()}
-                        renderItem={({ item }) => {
-                            return (
+                <View style={styles.containeritems}>
+                    <Image source={contact} />
+                    <Text style={{ color: 'white', marginLeft: '3%' }}>+00977-5628382766</Text>
+                </View>
 
-                                <Image source={item.image} style={styles.memoriese_mini_image} />
+            </View>
+            <View style={styles.containerBottom}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
 
+                    <View style={styles.containeritems}>
 
-                            )
-                        }}
+                        <Image source={settings} />
+                        <Text style={{ color: 'white', marginLeft: '10%' }}>Settings</Text>
+                    </View>
+                    <Icon
+                        name="right"
+                        type="antdesign"
+                        color={'white'}
+                        size={15}
+
                     />
                 </View>
-                <View style={styles.findmemoriese_image}>
-                <Image source={mainimage} style={styles.memoriese_image} />
-
+                <View style={styles.logoutbutton}>
+                    <Text style={{ color: 'white'}}>Logout</Text>
                 </View>
             </View>
+
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
- 
-    findmemoriese: {
+
+    container: {
+        backgroundColor: 'black',
+        marginTop: '2%',
+        height: 230,
         width: '100%',
-        height: 900,
-        marginTop: '3%'
+        borderTopRightRadius: 30,
+        borderTopLeftRadius: 30,
+        paddingHorizontal: 10
     },
-    findmemoriese_top: {
+    containerTop: {
         width: '100%',
-        height: '5%',
+        height: '45%',
+        borderBottomWidth: 0.3,
+        borderBottomColor: 'grey'
+    }
+    ,
+    containeritems: {
         flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    findmemoriese_top_left: {
-        width: '40%',
-        height: '100%',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    findmemoriese_top_right: {
-        width: '60%',
-        height: '100%',
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
+        marginLeft: '4%',
+        marginTop: '2%',
         alignItems: 'center'
     },
-    findmemoriese_flatlist: {
+    containerBottom: {
         width: '100%',
-        height: '8%',
+        height: '55%',
+    },
+    logoutbutton: {
+        backgroundColor: 'red',
+        width: '30%',
+        height: '25%',
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: '5%',
+        marginLeft: '6%'
+    },
 
-
-    },
-    memoriese_mini_image: {
-        width: 60,
-        height: 60,
-        marginRight: 9.4
-    },
-    findmemoriese_image: {
-        width: '100%',
-        height: 250,
-    },
-    memoriese_image: {
-        height: '100%',
-        width: '100%',
-     
-    },
 })
 export default Memoriese;
