@@ -23,6 +23,7 @@ export default function TabNavigator() {
         {
           tabBarStyle: {
             backgroundColor: '#171C26'
+            
           },
           lazy : true,
          tabBarShowLabel: false,
