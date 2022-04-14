@@ -1,22 +1,57 @@
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
+import HomeScreen from '../Screens/Home';
+import Account from '../Screens/Account';
+import Detail from '../Screens/Detail';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import  MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons'
+import Screen5 from '../Screens/Screen5';
+import { Icon, withBadge } from 'react-native-elements'
 
-const AppTab = createBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
+export default function TabNavigator() {
 
-import HomeScreen from '../screens/HomeScreen';
-import MyBooksScreen from '../screens/MyBooksScreen';
-import NewBookScreen from '../screens/NewBookScreen';
-import AppColors from '../config/AppColors';
-import AppIcon from '../components/AppIcon';
-import HomeNavigator from './HomeNavigator';
+  return (
+    <Tab.Navigator labeled={false} barStyle={{ backgroundColor: 'white' }} 
+activeColor="white" >
+      <Tab.Screen name="Home" component={HomeScreen}            //Home Screen
+      options={{
+        tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="home" color={'black'} size={26}/>
+        ),
+    }}/>
+      <Tab.Screen name="Search" component={Detail}      // Search Screen
+      options={{
+        tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="home" color={'black'} size={26}/>
+        ),
+    }}/>
+      <Tab.Screen name="Screen5" component={Screen5} 
+ // Notification Screen
+      options={{
+        tabBarIcon: ({ color, size }) => (
+          <MaterialCommunityIcons name="home" color={'black'} size={26}/>
 
+        ),
+    }}/>
+      <Tab.Screen name="Profile" component={Account}   // Profile Screen
+      options={{
+        tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="home"  color={'black'} 
+size={26}/>
+        ),
+    }}/>
+    </Tab.Navigator>
+  );
+}
 
-const TabNavigator = () => (
-    <AppTab.Navigator tabBarOptions={{activeTintColor:AppColors.otherColor, activeBackgroundColor:AppColors.primaryColor}}>
-        <AppTab.Screen name="Home" component={HomeNavigator} options={{tabBarIcon: () => <AppIcon size={30} name="home" backgroundColor={AppColors.otherColor}/>}}/>
-        <AppTab.Screen name="NewBooks" component={NewBookScreen} options={{tabBarIcon: () => <AppIcon size={30} name="plus-circle" backgroundColor={AppColors.otherColor}/>}}/>
-        <AppTab.Screen name="MyBooks" component={MyBooksScreen} options={{tabBarIcon: () => <AppIcon size={30} name="book-open-variant" backgroundColor={AppColors.otherColor}/>}}/>
-    </AppTab.Navigator>
-)
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
-export default TabNavigator;

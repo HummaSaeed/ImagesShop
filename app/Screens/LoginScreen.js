@@ -71,10 +71,10 @@ function LoginScreen({navigation}) {
                             if(validateUser(values)){   
                                 resetForm();
                                 createUser(values);
-                                navigation.navigate("Home", {
-                                        screen: "Home",
+                                navigation.navigate("TabNavigator", {
+                                        screen: "TabNavigator",
                                         params:{
-                                            screen:"Home",
+                                            screen:"TabNavigator",
                                             params:{ 
                                                 paramEmail: values.email,
                                                 paramName: getUser(values).name,
@@ -121,7 +121,7 @@ function LoginScreen({navigation}) {
                         onChangeText = {handleChange("password")}
                         />
                     {touched.password && <AppText style={{color:"red", fontSize:16}}>{errors.password}</AppText>}
-                    <TouchableOpacity onPress={(() => navigation.navigate('Screen5'))}>
+                    <TouchableOpacity onPress={(() => navigation.navigate('TabNavigator'))}>
                             <View style={[styles.button,]}>
                                 <Text style={styles.textbutton}>
                                     Log In
