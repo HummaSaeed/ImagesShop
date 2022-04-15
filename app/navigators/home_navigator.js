@@ -10,6 +10,7 @@ import LoginScreen from '../Screens/LoginScreen';
 import Screen5 from '../Screens/Screen5';
 import TabNavigator from './TabNAvigator.js/'
 import LogoAccount from '../Screens/LogoAcoount';
+import Form from '../Screens/Form';
 const AppStack =  createStackNavigator();
 
 
@@ -24,6 +25,7 @@ const AuthNavigator = () => (
         <AppStack.Screen name="LogoAccount" component={LogoAccount}/>
 
         <AppStack.Screen name="TabNavigator" component={TabNavigator}/>
+        <AppStack.Screen name="Form" component={Form}/>
 
         {/* <AppStack.Screen name="HomeScreen" component={HomeScreen}/> */}
  

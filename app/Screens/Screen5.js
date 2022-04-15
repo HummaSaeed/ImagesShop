@@ -16,8 +16,8 @@ import telegram from '../../assets/Telegram.png';
 import Details from '../Components/Details';
 
 
-
 function Screen5({navigation, route}) {
+    
     return (
         
         <ScrollView contentContainerStyle={{ flexGrow: 1,alignItems: 'center', justifyContent: 'center' }} style={styles.container}>

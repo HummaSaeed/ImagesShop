@@ -4,8 +4,11 @@ import {MaterialCommunityIcons} from '@expo/vector-icons';
 import AppIcon from './AppIcon';
 import location from '../../assets/location.png'
 import calendar from '../../assets/calendar.png'
+import {useSelector} from 'react-redux';
+import Store from '../Store';
 
 function Details({head,}) {
+    
     return (
         <View style={{height:190, borderRadius:20,justifyContent:'flex-start',}}>
             <Text style={styles.head}>{head}</Text>
@@ -15,7 +18,7 @@ function Details({head,}) {
             <Text >24 March, 2022</Text>
             <Image  style={{marginLeft: 25}}source={location} />
 
-            <Text style={{}}>Roberts Palace</Text>
+            <Text style={{}}>{Location}</Text>
             
             </View>
             <Text style={{marginTop:30, margin:5, color: "#475467"}}>

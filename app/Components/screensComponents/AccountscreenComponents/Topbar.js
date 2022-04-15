@@ -32,7 +32,7 @@ function Topbar({navigation}) {
 
                 </View>
                 <View style={styles.Topbar_right}>
-                    <TouchableOpacity style={styles.Editbutton}>
+                    <TouchableOpacity style={styles.Editbutton} onPress={(() => navigation.navigate('Form'))}>
                         <Text style={{color: 'white'}}>Edit</Text>
                     </TouchableOpacity>
                 </View>

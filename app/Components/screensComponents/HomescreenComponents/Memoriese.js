@@ -3,49 +3,14 @@ import { View, StyleSheet, Text,Image, FlatList } from 'react-native';
 
 import miniimage from '../../icons/miniimage.jpeg'
 import mainimage from '../../icons/mainimage.jpg'
-import right from '../../../../assets/right.png'
-
-const initialmemoriesewithfriends = [
-    {
-        id: 1,
-        image: miniimage
-    },
-    {
-        id: 2,
-        image: miniimage
-    },
-    {
-        id: 3,
-        image: miniimage
-    },
-    {
-        id: 4,
-        image: miniimage
-    },
-    {
-        id: 5,
-        image: miniimage
-    },
-    {
-        id: 7,
-        image: miniimage
-    },
-    {
-        id: 8,
-        image: miniimage
-    },
-    {
-        id: 9,
-        image: miniimage
-    },
-
-]
-
+import right from '../../../../assets/right.png';
+import { useSelector } from 'react-redux';
+import Store from '../../../Store';
 
 
 function Memoriese() {
-    
-    const [memoriesearray, setmemoriesearray] = useState(initialmemoriesewithfriends);
+    const newmemoriesearray = useSelector(state => state); 
+    // const [memoriesearray, setmemoriesearray] = useState(initialmemoriesewithfriends);
 
     return (
         <View style={styles.findmemoriese}>
@@ -59,16 +24,15 @@ function Memoriese() {
                     </View>
                 </View>
                 <View style={styles.findmemoriese_flatlist}>
+                
                     <FlatList
-                        data={memoriesearray}
+                        data={newmemoriesearray}
                         horizontal
                         showsHorizontalScrollIndicator={false}
                         keyExtractor={Categoriesearray => Categoriesearray.id.toString()}
                         renderItem={({ item }) => {
                             return (
-
                                 <Image source={item.image} style={styles.memoriese_mini_image} />
-
 
                             )
                         }}

@@ -5,21 +5,26 @@ import { Icon, withBadge } from 'react-native-elements'
 import mail from '../../../../assets/mail.png'
 import contact from '../../../../assets/contact.png'
 import settings from '../../../../assets/settings.png'
+import { useSelector } from 'react-redux';
+import Store from '../../../Store';
 
 
 function Memoriese() {
-
-
+//   const email = useSelector((state) =>state.email);
+//   const phoneno = useSelector((state) =>state.phoneno);
+ 
     return (
         <View style={styles.container}>
             <View style={styles.containerTop}>
                 <View style={styles.containeritems}>
                     <Image source={mail} />
-                    <Text style={{ color: 'white', marginLeft: '3%' }}>anees2017@gmail.com</Text>
+   
+                        <Text style={{ color: 'white', marginLeft: '3%' }}>humma786</Text>
+                    
                 </View>
                 <View style={styles.containeritems}>
                     <Image source={contact} />
-                    <Text style={{ color: 'white', marginLeft: '3%' }}>+00977-5628382766</Text>
+                    <Text style={{ color: 'white', marginLeft: '3%' }}>64373</Text>
                 </View>
 
             </View>
