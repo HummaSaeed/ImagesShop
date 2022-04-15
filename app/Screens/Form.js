@@ -34,7 +34,7 @@ function Form({navigation}) {
          Description: Description
      }
 
-     dispatch(addMemory(new_Memory));
+    console.log( dispatch(addMemory(new_Memory)));
     
  }
 

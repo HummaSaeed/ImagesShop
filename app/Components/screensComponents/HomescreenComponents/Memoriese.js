@@ -9,7 +9,7 @@ import Store from '../../../Store';
 
 
 function Memoriese() {
-    const newmemoriesearray = useSelector(state => state); 
+    const newmemoriesearray = useSelector(state => state.memoriese.image); 
     // const [memoriesearray, setmemoriesearray] = useState(initialmemoriesewithfriends);
 
     return (

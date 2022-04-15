@@ -15,8 +15,6 @@ const initialmemoriesewithfriends =  {
     {
         id: 1,
         image: miniimage,
-        email: 'newpakistan@gmail.com',
-        phoneno: 45376437,
         MemoryName:'',
         Date: 0,
         Location:'',
