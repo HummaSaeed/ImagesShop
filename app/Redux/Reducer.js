@@ -1,4 +1,4 @@
-import { ADD_MEMORY } from './actions'
+import { ADD_MEMORY,REMOVE_MEMORY } from './actions'
 import logo from '../Components/icons/logo.png'
 import miniimage from '../Components/icons/miniimage.jpeg'
 import mainimage from '../Components/icons/mainimage.jpg'
@@ -135,6 +135,9 @@ function Reducer(state = inittialstate, action) {
                 }
 
             }
+            case REMOVE_MEMORY : 
+            return {... state, memoriese : state.memoriese.filter((event) => parseInt(event.id) !== parseInt(action.payload))} 
+      
     
 
       

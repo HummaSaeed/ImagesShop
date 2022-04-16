@@ -9,8 +9,6 @@ import { useSelector } from 'react-redux';
 
 
 function Mainbody({selectedcategory, memoriese, navigation}) {
-    
-
     return (
         <View style={styles.mainbody}>
          <FlatList
@@ -19,22 +17,27 @@ function Mainbody({selectedcategory, memoriese, navigation}) {
                         showsHorizontalScrollIndicator={false}
                         keyExtractor={(item, index) => String(index)}              
                         renderItem={({ item }) => {
-                            if(item.MemoryName == selectedcategory)
-                            {
-                                return (
-                                    <TouchableOpacity onPress={() => navigation.navigate('Screen5', {
-                                        item : item
-                                      })} style={{marginLeft:12}}>
-                                    <Image 
-                                    source={item.image} style={{maxHeight: 150, maxWidth: 150}}  />
-                                    </TouchableOpacity>
-                                )
+                       
+                                if(item.MemoryName == selectedcategory)
+                                {
+                                    return (
+                                        <View style={{marginTop: 10,marginLeft: 12,maxHeight: 150, maxWidth: 150}}>
+                                        <TouchableOpacity onPress={() => navigation.navigate('Screen5', {
+                                            item : item
+                                          })} >
+                                        <Image 
+                                        source={item.image} style={{maxHeight: 150, maxWidth: 150}}  />
+                                        </TouchableOpacity>
+                                        </View>
+                                    )
+                                }
+                                else{
+                                    return null
+                                }
                             }
-                            else{
-                                return null
-                            }
+                          
                      
-                        }}
+                        }
                     />
 
     </View>  

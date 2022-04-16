@@ -1,9 +1,12 @@
-import React from 'react';
+
+import React, {useState} from 'react';
 import { View, StyleSheet, TextInput, Text, Image} from 'react-native';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
-import Memories1 from '../../assets/Memories1.png'
+import Memories1 from '../../assets/Memories1.png';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 
 import AppButton from '../Components/AppButton';
@@ -13,7 +16,7 @@ import AppTextInput from '../Components/AppTextInput'
 import AppText from '../Components/AppText'
 import DataManager from '../config/DataManager';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import Home from './Home'
 
 
 const schema = Yup.object().shape(
@@ -22,23 +25,6 @@ const schema = Yup.object().shape(
         password:  Yup.string().required().min(4).max(8).label("Password"),
     }
 );
-
-const users = [
-    {
-        id: "user1",
-        name:"Billie Eilish",
-        email: "billie@gmail.com",
-        password: "1234",
-        image: require('../../assets/user1.jpeg')
-    },
-    {
-        id: "user2",
-        name:"Jon Snow",
-        email: "js@gmail.com",
-        password: "2345",
-        image: require('../../assets/user2.jpeg'),
-    },
-];
 
 const validateUser = ({email, password}) => {
     return(
@@ -57,71 +43,66 @@ const createUser = ({email}) => {
 }
 
 function LoginScreen({navigation}) {
+    const [logemail, setlogEmail] = useState();
+    const [logpassword, setlogPassword] = useState();
+    const [flag, setFlag] = useState(false);
 
+  const [home, setHome] = useState(true);
+
+    const handleLogin = async() => {
+        
+        let mail = await AsyncStorage.getItem('@storage_Key2');
+        let pass = await AsyncStorage.getItem('@storage_Key3');
+        console.log(mail);
+        console.log(pass);
+    
+        if (!logemail || !logpassword) {
+          setFlag(true);
+          console.log("EMPTY");
+        } else if (logpassword !== pass || logemail !== mail) {
+          setFlag(true);
+          console.log("login password is not equal")
+        } else {
+            navigation.navigate('TabNavigator')
+
+          setHome(!home);
+          setFlag(false);
+          console.log("verified");
+        }
+      }
 
     return (
         <AppScreen style={styles.container}>
-                <View style={{backgroundColor:'#42C2FF33', width: 450, height: 319,  justifyContent: 'center'}}>
+          <View>
+                 <View style={{backgroundColor:'#42C2FF33', width: 450, height: 319,  justifyContent: 'center'}}>
                     <Image source={Memories1} style={{ width: 250, height: 242, marginLeft: 50, marginTop:10}}/>
                 </View>
                  <View style={{marginLeft:20}}><Text style={{fontWeight: 'bold', fontSize:20, marginTop:30, width:150}}>Welcome Back to Login</Text></View>
-                <Formik
-                    initialValues={{email:'', password:'',}}
-                    onSubmit = {(values, {resetForm})=> {
-                            if(validateUser(values)){   
-                                resetForm();
-                                createUser(values);
-                                navigation.navigate("TabNavigator", {
-                                        screen: "TabNavigator",
-                                        params:{
-                                            screen:"TabNavigator",
-                                            params:{ 
-                                                paramEmail: values.email,
-                                                paramName: getUser(values).name,
-                                                paramImage: getUser(values).image,
-                                            },
-                                        }
-                                    }
-                                    );
-                            }
-                            else{
-                                resetForm();
-                                alert("Invalid Login Details")
-                            }
-                        }}
-                    validationSchema={schema}
-                    >
-                {({values, handleChange, handleSubmit, errors, setFieldTouched, touched})=> (
-                    <>
+      
                     <View style={styles.textInputContainer}>   
                     <Text>Username</Text>          
                     <AppTextInput
-                        name="emailField"
                         autoCapitalize="none"
                         autoCorrect={false}
                         icon="email"
-                        placeholder="Email Address"
+                        placeholder="Enter Your Email"
                         keyboardType="email-address"
                         textContentType="emailAddress"
-                        value={values.email}
-                        onBlur = {() => setFieldTouched("email")}
-                        onChangeText = {handleChange("email")}
+                        onChangeText = { userInputEmail => setlogEmail(userInputEmail)}
                         />
-                    {touched.email && <AppText style={{color:"red", fontSize:16}}>{errors.email}</AppText>}
+                    {/* {touched.email && <AppText style={{color:"red", fontSize:16}}>{errors.email}</AppText>} */}
                     <Text>Password</Text>
                     <AppTextInput
                         autoCapitalize="none"
                         autoCorrect={false}
                         icon="lock"
-                        placeholder="Password"
+                        placeholder="Enter Password"
                         secureTextEntry
                         textContentType="password"
-                        value={values.password}
-                        onBlur = {() => setFieldTouched("password") }
-                        onChangeText = {handleChange("password")}
+                        onChangeText = {userInputPassword => setlogPassword(userInputPassword)}
                         />
-                    {touched.password && <AppText style={{color:"red", fontSize:16}}>{errors.password}</AppText>}
-                    <TouchableOpacity onPress={(() => navigation.navigate('TabNavigator'))}>
+                    {/* {touched.password && <AppText style={{color:"red", fontSize:16}}>{errors.password}</AppText>} */}
+                    <TouchableOpacity onPress={(() => handleLogin())}>
                             <View style={[styles.button,]}>
                                 <Text style={styles.textbutton}>
                                     Log In
@@ -135,11 +116,8 @@ function LoginScreen({navigation}) {
                 </View> 
                 
 
-                    </>
-                )}
-                 </Formik>
-                
-        </AppScreen>
+                 </View>
+        </AppScreen>  
     );
 }
 

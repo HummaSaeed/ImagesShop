@@ -1,22 +1,45 @@
 import React, {useState} from 'react';
-import { View, StyleSheet, TextInput,Text, Button } from 'react-native';
+import { View, StyleSheet, TextInput,Text, Button, Alert } from 'react-native';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 import AppButton from '../Components/AppButton';
 import AppColors from '../config/AppColors';
 import AppScreen from '../Components/AppScreen';
 import AppTextInput from '../Components/AppTextInput'
-import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import { TouchableOpacity,TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import LoginScreen from './LoginScreen';
 
 function RegisterScreen({navigation}) {
-    const [userName, setUserName] = useState();
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [userName, setUserName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [flag, setflag] = useState(false);
+    const [Login, setLogin] =useState(true);
+
+    const handleSubmit =async() =>{
+        
+       if(!userName || !email || !password){
+           setflag(true);
+           {flag == true && (
+            <Alert> Please Fill All Fields</Alert>)
+        }
+       } else{
+           setflag(false);
+            await AsyncStorage.setItem('@storage_Key', userName);
+            await AsyncStorage.setItem('@storage_Key', email);
+            await AsyncStorage.setItem('@storage_Key', password);
+           console.log("Saved in local storage");
+         navigation.navigate('LoginScreen')
+       }
+    }
 
     return (
+        
         <AppScreen style={styles.container}>
+         
+                <View>
                 <View><Text style={{fontWeight: 'bold', fontSize:20, marginTop:100, width:150}}>Sign Up To Continue</Text></View>
                 <View style={styles.textInputContainer}>  
                 <Text style={styles.text}>Full Name</Text>
@@ -48,20 +71,23 @@ function RegisterScreen({navigation}) {
                         textContentType="password"
                         onChangeText = {userInputPassword => setPassword(userInputPassword)}
                         />
-                        <TouchableOpacity onPress={(() => navigation.navigate('LoginScreen'))}>
+                        <TouchableWithoutFeedback>
+                        <TouchableOpacity onPress={()=> handleSubmit()}>
                             <View style={[styles.button,]}>
                                 <Text style={styles.textbutton}>
                                     Sign Up
                                 </Text>
                             </View>
                         </TouchableOpacity>
+                        </TouchableWithoutFeedback>
                <View style={{flexDirection: 'row', justifyContent:'center'}}>
                 <Text>Have an account? </Text>
                 <Text style={{color:'#F76631'}}>Log in</Text>
                 </View>
+                
                 </View> 
-               
-
+                </View>
+             
         </AppScreen>
     );
 }

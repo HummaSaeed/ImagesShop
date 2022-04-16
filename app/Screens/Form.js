@@ -51,7 +51,8 @@ function Form({ navigation }) {
             image: image
         }
 
-        dispatch(addMemory(new_Memory));
+      //  dispatch(addMemory(new_Memory));
+        //console.log(dispatch(addMemory(new_Memory)));
     }
 
     return (
@@ -68,7 +69,7 @@ function Form({ navigation }) {
             </View>
             <View><Text style={{ fontWeight: 'bold', fontSize: 20, marginTop: 20, justifyContent: 'center', marginLeft: 70, width: 150 }}>Add A Memory</Text></View>
             <Button title="Pick an image from camera roll" onPress={pickImage} />
-                    {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+                   {/* {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}*/}
             <View style={styles.textInputContainer}>
 
                 <Text style={styles.text}>Memory Name</Text>

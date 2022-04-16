@@ -1,27 +1,50 @@
 import React from 'react';
-import { StyleSheet,Image, Text, View, TouchableOpacity, ScrollView  } from 'react-native';
-import AppButton from '../Components/AppButton'
-import AppColors from '../config/AppColors';
-import DataImage from '../../assets/data_image.png'
-import AppButtonSecondary from '../Components/AppButtonSecondary';
-import AppIcon from '../Components/AppIcon';
-import {MaterialCommunityIcons} from '@expo/vector-icons';
+import { StyleSheet,Image, Text, View, TouchableOpacity, ScrollView , ImageBackground, } from 'react-native';
+
 import SocialMedia from '../Components/Social_media';
 import facebookmessenger from '../../assets/Facebook_Messenger.png';
 import facebook from '../../assets/Facebook.png';
 import twitter from '../../assets/Twitter.png';
+import {removeMemory} from '../Redux/actions'
 import snapchat from '../../assets/Snapchat.png';
 import pinterest from '../../assets/Pinterest.png';
 import telegram from '../../assets/Telegram.png';
 import Details from '../Components/Details';
-
+import { Icon, withBadge } from 'react-native-elements'
+import { useSelector, useDispatch } from 'react-redux';
 
 function Screen5({navigation, route}) {
     const {item} = route.params
+    const dispatch = useDispatch()
     return (
         
         <ScrollView contentContainerStyle={{ flexGrow: 1,alignItems: 'center', justifyContent: 'center' }} style={styles.container}>
-        <Image source={item.image} style={{ width: 350, height: 460 }} /> 
+        <View style={{ width: 350, height: 460}}>
+        <ImageBackground source={item.image} resizeMode="cover" style={{flex: 1}}>
+     <View style={{flexDirection: 'row', justifyContent: 'space-between',padding: 20,height: 150}}>
+     <TouchableOpacity style={styles.moveback} onPress={() => navigation.goBack()}>
+                <Icon
+                    name="left"
+                    type="antdesign"
+                    color={'black'}
+                    size={15}
+
+                />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.moveback} onPress={() => dispatch(removeMemory(item.id))}>
+
+            <Icon
+                    name="delete"
+                    type="antdesign"
+                    color={'black'}
+                    size={15}
+
+                />
+                            </TouchableOpacity>
+
+     </View>
+    </ImageBackground>
+        </View>
         <Details item = {item}/>
         <View style={{backgroundColor:'black', height:130, width:'100%',padding:5, borderTopRightRadius: 20,borderTopLeftRadius:20}}>
         <Text style={{color:'white', fontWeight: 'bold', margin:10}}>Share With: </Text>
@@ -46,6 +69,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
        
         
+    },
+    Topbar: {
+        height: '20%',
+        width: '100%',
+        marginTop: '5%',
+        justifyContent: 'center',
+        padding: '3%',
+
     },
     text:{
         marginTop:100,

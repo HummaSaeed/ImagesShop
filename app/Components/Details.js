@@ -5,7 +5,6 @@ import location from '../../assets/location.png'
 import calendar from '../../assets/calendar.png'
 
 function Details({item}) {
-    alert(item.Date)
     return (
         <View style={{height:190, borderRadius:20,justifyContent:'flex-start',}}>
             <Text style={styles.head}>{item.MemoryName}</Text>

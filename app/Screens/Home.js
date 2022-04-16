@@ -38,7 +38,7 @@ function HomeScreen({ route, navigation }) {
 
     const [Categoriesearray, setCategoriesearray] = useState(initialImagesCategoriese);
 
-    const [selectedcategory, setselectedcategory] = useState('Birthday party')
+    const [selectedcategory, setselectedcategory] = useState('Birthday Party')
     const { memoriese } = useSelector(state => state.Reducer)
     return (
         <View contentContainerStyle={{ flexGrow: 2, paddingBottom: 0, marginBottom: 0 }} style={styles.container}>

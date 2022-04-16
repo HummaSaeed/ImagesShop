@@ -8,16 +8,14 @@ import { useSelector } from 'react-redux';
 import Store from '../../../Store';
 
 
-function Memoriese() {
+function Memoriese({navigations}) {
     const newmemoriesearray = useSelector(state => state); 
-    const [image, setimage] = useState('')
 
     // const [memoriesearray, setmemoriesearray] = useState(initialmemoriesewithfriends);
     const { memoriese } = useSelector(state => state.Reducer)
-    useEffect(() => {
-        // Update the document title using the browser API
-      });
- 
+    const [image, setimage] = useState(memoriese[0].image)
+
+    
     return (
         <View style={styles.findmemoriese}>
                 <View style={styles.findmemoriese_top}>

@@ -58,7 +58,7 @@ unmountOnBlur={true}
         }
 
       />
-      <Tab.Screen name="Detail" component={Detail}
+      <Tab.Screen name="Detail" component={HomeScreen}
 
 
 
