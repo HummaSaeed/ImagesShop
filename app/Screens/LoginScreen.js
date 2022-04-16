@@ -50,8 +50,10 @@ function LoginScreen({navigation}) {
 
     const handleLogin = async() => {
         
-        let mail = await AsyncStorage.getItem('humma786@gmail.com');
-        let pass = await AsyncStorage.getItem('7860');
+        let mail = await AsyncStorage.getItem('@storage_Key');
+        let pass = await AsyncStorage.getItem('@storage_Key');
+        console.log(mail);
+        console.log(pass);
     
         if (!logemail || !logpassword) {
           setFlag(true);
