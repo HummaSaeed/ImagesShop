@@ -6,6 +6,7 @@ import Mainbody from '../Components/screensComponents/HomescreenComponents/Mainb
 import Memoriese from '../Components/screensComponents/HomescreenComponents/Memoriese';
 
 import Topbar from '../Components/screensComponents/HomescreenComponents/Topbar';
+import { useSelector } from 'react-redux';
 
 
 const initialImagesCategoriese = [
@@ -33,29 +34,31 @@ const initialImagesCategoriese = [
 ]
 
 
-function HomeScreen({route, navigation}) {
+function HomeScreen({ route, navigation }) {
 
     const [Categoriesearray, setCategoriesearray] = useState(initialImagesCategoriese);
 
     const [selectedcategory, setselectedcategory] = useState('Birthday party')
-
+    const { memoriese } = useSelector(state => state.Reducer)
     return (
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={styles.container}>
-        
-            <Topbar navigation={navigation}/>
+        <View contentContainerStyle={{ flexGrow: 2, paddingBottom: 0, marginBottom: 0 }} style={styles.container}>
+
+            <Topbar navigation={navigation} />
             <View style={styles.Categoriese}>
+      
                 <FlatList
-                    data={Categoriesearray}
+                    data={initialImagesCategoriese}
                     horizontal
                     showsHorizontalScrollIndicator={false}
-                    keyExtractor={Categoriesearray => Categoriesearray.id.toString()}
+                    keyExtractor={(item, index) => String(index)}              
                     renderItem={({ item }) => {
                         return (
 
-                            <View style={{...styles.listitems, backgroundColor: selectedcategory == item.text ? '#F76631': 'white'}}>
-                                <TouchableOpacity onPress={() => setselectedcategory(item.text)}>
+                            <View style={{ ...styles.listitems, backgroundColor: selectedcategory == item.text ? '#F76631' : 'white' }}>
+                                <TouchableOpacity 
+                                onPress={() => setselectedcategory(item.text)}>
 
-                                    <Text style={{...styles.listitemsText,color: selectedcategory == item.text ? 'white': 'black'}}>{item.text}</Text>
+                                    <Text style={{ ...styles.listitemsText, color: selectedcategory == item.text ? 'white' : 'black' }}>{item.text}</Text>
                                 </TouchableOpacity>
 
                             </View>
@@ -65,21 +68,31 @@ function HomeScreen({route, navigation}) {
                     }}
                 />
             </View>
-            <Mainbody />
-            <Memoriese />
+                    
+       <Mainbody selectedcategory={selectedcategory} memoriese={memoriese} navigation={navigation} />
+                    <Memoriese />
 
-        </ScrollView>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        height: '100%',
+        width: '100%',
         marginTop: 0,
         padding: '3%',
         backgroundColor: 'white',
         zIndex: 0
 
+    },
+    mainbody: {
+        marginTop: '5%',
+        width: '100%',
+        height: '20%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
     },
     Categoriese: {
         width: '100%',

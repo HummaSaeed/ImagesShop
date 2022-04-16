@@ -1,27 +1,43 @@
 import React from 'react';
-import { View, StyleSheet, Text,Image } from 'react-native';
+import { View, StyleSheet, Text,Image,FlatList, TouchableOpacity  } from 'react-native';
 
 import rectangle1 from '../../icons/rectangle1.jpg'
 import rectangle2 from '../../icons/rectangle2.jpg'
 
+import { useSelector } from 'react-redux';
 
 
-function Mainbody() {
+
+function Mainbody({selectedcategory, memoriese, navigation}) {
+    
+
     return (
         <View style={styles.mainbody}>
-        <View style={styles.mainbody_column}>
-            <Image style={styles.rectangel1} source={rectangle1} />
-            <Image style={styles.rectangel2} source={rectangle2} />
+         <FlatList
+                        data={memoriese}
+                        numColumns={2}
+                        showsHorizontalScrollIndicator={false}
+                        keyExtractor={(item, index) => String(index)}              
+                        renderItem={({ item }) => {
+                            if(item.MemoryName == selectedcategory)
+                            {
+                                return (
+                                    <TouchableOpacity onPress={() => navigation.navigate('Screen5', {
+                                        item : item
+                                      })} style={{marginLeft:12}}>
+                                    <Image 
+                                    source={item.image} style={{maxHeight: 150, maxWidth: 150}}  />
+                                    </TouchableOpacity>
+                                )
+                            }
+                            else{
+                                return null
+                            }
+                     
+                        }}
+                    />
 
-        </View>
-        <View style={styles.mainbody_column}>
-            <Image style={styles.rectangel2} source={rectangle2} />
-
-            <Image style={styles.rectangel1} source={rectangle1} />
-
-        </View>
-
-    </View>
+    </View>  
     );
 }
 
@@ -29,8 +45,9 @@ const styles = StyleSheet.create({
     mainbody: {
         marginTop: '5%',
         width: '100%',
-        height: '40%',
+        height: '30%',
         flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'space-between',
     },
     mainbody_column: {

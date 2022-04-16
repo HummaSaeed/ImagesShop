@@ -8,6 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import  MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons'
 import Screen5 from '../Screens/Screen5';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Form from '../Screens/Form';
 import Svg, { Circle, Path } from "react-native-svg";
 const Tab = createBottomTabNavigator();
 export default function TabNavigator() {
@@ -79,7 +80,7 @@ lazy: true,
         }
 
       />
-      <Tab.Screen name="plus" component={HomeScreen}
+      <Tab.Screen name="plus" component={Form}
 
 
 

@@ -17,12 +17,12 @@ import Details from '../Components/Details';
 
 
 function Screen5({navigation, route}) {
-    
+    const {item} = route.params
     return (
         
         <ScrollView contentContainerStyle={{ flexGrow: 1,alignItems: 'center', justifyContent: 'center' }} style={styles.container}>
-        <Image source={DataImage} style={{ width: 350, height: 460 }} /> 
-        <Details head="Eleanor Blowing Baloons at Party"/>
+        <Image source={item.image} style={{ width: 350, height: 460 }} /> 
+        <Details item = {item}/>
         <View style={{backgroundColor:'black', height:130, width:'100%',padding:5, borderTopRightRadius: 20,borderTopLeftRadius:20}}>
         <Text style={{color:'white', fontWeight: 'bold', margin:10}}>Share With: </Text>
         <View style={styles.iconView}>

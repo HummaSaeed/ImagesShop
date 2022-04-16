@@ -1,28 +1,25 @@
 import React from 'react';
 import { StyleSheet, View,Text , Image} from 'react-native';
-import {MaterialCommunityIcons} from '@expo/vector-icons';
-import AppIcon from './AppIcon';
+
 import location from '../../assets/location.png'
 import calendar from '../../assets/calendar.png'
-import {useSelector} from 'react-redux';
-import Store from '../Store';
 
-function Details({head,}) {
-    
+function Details({item}) {
+    alert(item.Date)
     return (
         <View style={{height:190, borderRadius:20,justifyContent:'flex-start',}}>
-            <Text style={styles.head}>{head}</Text>
+            <Text style={styles.head}>{item.MemoryName}</Text>
             <View style={{flexDirection:'row', alignItems: 'center'}}>
             <Image source={calendar} />
 
-            <Text >24 March, 2022</Text>
-            <Image  style={{marginLeft: 25}}source={location} />
+            <Text >{item.Date}</Text>
+            <Image  style={{marginLeft: 25}} source={location} />
 
-            <Text style={{}}>{Location}</Text>
+            <Text style={{}}>{item.Location}</Text>
             
             </View>
             <Text style={{marginTop:30, margin:5, color: "#475467"}}>
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation.
+{item.Description}
             </Text>
             </View>
       

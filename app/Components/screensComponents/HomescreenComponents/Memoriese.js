@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { View, StyleSheet, Text,Image, FlatList } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { View, StyleSheet, Text,Image, FlatList, TouchableOpacity } from 'react-native';
 
 import miniimage from '../../icons/miniimage.jpeg'
 import mainimage from '../../icons/mainimage.jpg'
@@ -10,10 +10,14 @@ import Store from '../../../Store';
 
 function Memoriese() {
     const newmemoriesearray = useSelector(state => state); 
+    const [image, setimage] = useState('')
+
     // const [memoriesearray, setmemoriesearray] = useState(initialmemoriesewithfriends);
     const { memoriese } = useSelector(state => state.Reducer)
-    alert(memoriese[0].id)
-
+    useEffect(() => {
+        // Update the document title using the browser API
+      });
+ 
     return (
         <View style={styles.findmemoriese}>
                 <View style={styles.findmemoriese_top}>
@@ -28,20 +32,30 @@ function Memoriese() {
                 <View style={styles.findmemoriese_flatlist}>
                 
                     <FlatList
-                        data={newmemoriesearray}
+                        data={memoriese}
                         horizontal
                         showsHorizontalScrollIndicator={false}
                         keyExtractor={Categoriesearray => Categoriesearray.id.toString()}
                         renderItem={({ item }) => {
                             return (
-                                <Image source={memoriese[0].image} style={styles.memoriese_mini_image} />
-
+                                <TouchableOpacity onPress={() => setimage(item.image)}>
+                                <Image source={item.image} style={styles.memoriese_mini_image} />
+                                </TouchableOpacity>
                             )
                         }}
                     />
                 </View>
                 <View style={styles.findmemoriese_image}>
-                <Image source={mainimage} style={styles.memoriese_image} />
+                    {
+                        image != '' ? 
+                        <Image source={image} style={styles.memoriese_image} />
+:
+
+null 
+
+
+
+                    }
 
                 </View>
             </View>
@@ -91,7 +105,7 @@ const styles = StyleSheet.create({
     },
     findmemoriese_image: {
         width: '100%',
-        height: 250,
+        height: 170,
     },
     memoriese_image: {
         height: '100%',

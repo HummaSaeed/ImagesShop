@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
 
     },
     Logo: {
-        height: '60%',
+        height: '100%',
         width: '36.8%',
         borderRadius: 30,
         overflow: 'hidden'
