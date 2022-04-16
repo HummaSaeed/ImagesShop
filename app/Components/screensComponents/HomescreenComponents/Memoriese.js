@@ -9,11 +9,8 @@ import Store from '../../../Store';
 
 
 function Memoriese() {
-    const newmemoriesearray = useSelector(state => state); 
-    // const [memoriesearray, setmemoriesearray] = useState(initialmemoriesewithfriends);
-    const { memoriese } = useSelector(state => state.Reducer)
-    alert(memoriese[0].id)
-
+    const { newmemoriese } = useSelector(state => state.Reducer)
+    
     return (
         <View style={styles.findmemoriese}>
                 <View style={styles.findmemoriese_top}>
@@ -28,13 +25,13 @@ function Memoriese() {
                 <View style={styles.findmemoriese_flatlist}>
                 
                     <FlatList
-                        data={newmemoriesearray}
+                        data={newmemoriese}
                         horizontal
                         showsHorizontalScrollIndicator={false}
                         keyExtractor={Categoriesearray => Categoriesearray.id.toString()}
                         renderItem={({ item }) => {
                             return (
-                                <Image source={memoriese[0].image} style={styles.memoriese_mini_image} />
+                                <Image source={newmemoriese.image} style={styles.memoriese_mini_image} />
 
                             )
                         }}

@@ -9,6 +9,7 @@ import  MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunit
 import Screen5 from '../Screens/Screen5';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Svg, { Circle, Path } from "react-native-svg";
+import Form from '../Screens/Form';
 const Tab = createBottomTabNavigator();
 export default function TabNavigator() {
 
@@ -59,11 +60,6 @@ unmountOnBlur={true}
       />
       <Tab.Screen name="Detail" component={Detail}
 
-
-
-
-
-
         options={{
 lazy: true,
           showLabel: false,
@@ -73,16 +69,10 @@ lazy: true,
         ),
 
         }
-
-
-
         }
 
       />
-      <Tab.Screen name="plus" component={HomeScreen}
-
-
-
+      <Tab.Screen name="plus" component={Form}
 
         options={{
           showLabel: false,

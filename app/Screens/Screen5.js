@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet,Image, Text, View, TouchableOpacity, ScrollView  } from 'react-native';
+import { useSelector } from 'react-redux';
 import AppButton from '../Components/AppButton'
 import AppColors from '../config/AppColors';
 import DataImage from '../../assets/data_image.png'
@@ -17,11 +18,12 @@ import Details from '../Components/Details';
 
 
 function Screen5({navigation, route}) {
-    
+    const { memoriese } = useSelector(state => state.Reducer)
+    console.log(memoriese.image);
     return (
         
         <ScrollView contentContainerStyle={{ flexGrow: 1,alignItems: 'center', justifyContent: 'center' }} style={styles.container}>
-        <Image source={DataImage} style={{ width: 350, height: 460 }} /> 
+        <Image source={memoriese.image} style={{ width: 200, height: 200 }} /> 
         <Details head="Eleanor Blowing Baloons at Party"/>
         <View style={{backgroundColor:'black', height:130, width:'100%',padding:5, borderTopRightRadius: 20,borderTopLeftRadius:20}}>
         <Text style={{color:'white', fontWeight: 'bold', margin:10}}>Share With: </Text>

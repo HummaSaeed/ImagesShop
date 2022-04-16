@@ -8,21 +8,22 @@ import {useSelector} from 'react-redux';
 import Store from '../Store';
 
 function Details({head,}) {
+    const { memoriese } = useSelector(state => state.Reducer)
     
     return (
         <View style={{height:190, borderRadius:20,justifyContent:'flex-start',}}>
-            <Text style={styles.head}>{head}</Text>
+            <Text style={styles.head}>{memoriese.MemoryName}</Text>
             <View style={{flexDirection:'row', alignItems: 'center'}}>
             <Image source={calendar} />
 
-            <Text >24 March, 2022</Text>
-            <Image  style={{marginLeft: 25}}source={location} />
+            <Text >{memoriese.Date}</Text>
+            <Image  style={{marginLeft: 25}} source={location} />
 
-            <Text style={{}}>{Location}</Text>
+            <Text style={{}}>{memoriese.Location}</Text>
             
             </View>
             <Text style={{marginTop:30, margin:5, color: "#475467"}}>
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation.
+         {memoriese.Description}
             </Text>
             </View>
       

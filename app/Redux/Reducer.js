@@ -1,10 +1,10 @@
 import { ADD_MEMORY } from './actions'
-import miniimage from '../Components/icons/logo.png'
+import miniimage from "../Components/icons/miniimage.jpeg";
 const inittialstate = {
     //{ category: 'empty', productname: 'empty', price: 'empty', quantity: 'empty', discription: 'empty'}
     memoriese: [  {
         id: 1,
-        image: miniimage,
+        image: null,
         email: 'newpakistan@gmail.com',
         phoneno: 35376437,
         MemoryName:'',
@@ -14,20 +14,15 @@ const inittialstate = {
 
     }],
    
-
 }
 
 function Reducer(state = inittialstate, action) {
  
     switch (action.type) {
 
-
-
         case ADD_MEMORY:
             {
 
-
-              
                 return {
                     ...state,
                     memoriese: action.payload
