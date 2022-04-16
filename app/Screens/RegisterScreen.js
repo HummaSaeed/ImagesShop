@@ -22,14 +22,12 @@ function RegisterScreen({navigation}) {
         
        if(!userName || !email || !password){
            setflag(true);
-           {flag == true && (
-            <Alert> Please Fill All Fields</Alert>)
-        }
+           
        } else{
            setflag(false);
-            await AsyncStorage.setItem('@storage_Key', userName);
-            await AsyncStorage.setItem('@storage_Key', email);
-            await AsyncStorage.setItem('@storage_Key', password);
+            await AsyncStorage.setItem('@storage_Key1', userName);
+            await AsyncStorage.setItem('@storage_Key2', email);
+            await AsyncStorage.setItem('@storage_Key3', password);
            console.log("Saved in local storage");
            setLogin(!Login)
        }

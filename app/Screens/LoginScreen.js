@@ -50,8 +50,8 @@ function LoginScreen({navigation}) {
 
     const handleLogin = async() => {
         
-        let mail = await AsyncStorage.getItem('@storage_Key');
-        let pass = await AsyncStorage.getItem('@storage_Key');
+        let mail = await AsyncStorage.getItem('@storage_Key2');
+        let pass = await AsyncStorage.getItem('@storage_Key3');
         console.log(mail);
         console.log(pass);
     

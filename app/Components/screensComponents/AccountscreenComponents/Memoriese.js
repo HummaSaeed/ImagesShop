@@ -7,20 +7,28 @@ import contact from '../../../../assets/contact.png'
 import settings from '../../../../assets/settings.png'
 import { useSelector } from 'react-redux';
 import Store from '../../../Store';
-
+import RegisterScreen from '../../../Screens/RegisterScreen'
 
 function Memoriese() {
-//   const email = useSelector((state) =>state.email);
-//   const phoneno = useSelector((state) =>state.phoneno);
- 
+
+  const [logout, setlogout] = useState(true)
+    const handleSubmit = async () => {
+        try {
+            await AsyncStorage.removeItem('@storage_Key2');
+            
+        } catch {
+            console.log("not logout")
+        }
+    }
     return (
         <View style={styles.container}>
+            {logout ? <View>
             <View style={styles.containerTop}>
                 <View style={styles.containeritems}>
                     <Image source={mail} />
-   
-                        <Text style={{ color: 'white', marginLeft: '3%' }}>humma786</Text>
-                    
+
+                    <Text style={{ color: 'white', marginLeft: '3%' }}>humma786</Text>
+
                 </View>
                 <View style={styles.containeritems}>
                     <Image source={contact} />
@@ -44,10 +52,11 @@ function Memoriese() {
 
                     />
                 </View>
-                <View style={styles.logoutbutton}>
-                    <Text style={{ color: 'white'}}>Logout</Text>
-                </View>
-            </View>
+                <TouchableOpacity style={styles.logoutbutton} onPress={() =>{handleSubmit() }}>
+                    <Text style={{ color: 'white' }}>Logout</Text>
+                </TouchableOpacity>
+            </View></View> :
+            <RegisterScreen />}
 
         </View>
     );
