@@ -7,7 +7,7 @@ import Memoriese from '../Components/screensComponents/HomescreenComponents/Memo
 
 import Topbar from '../Components/screensComponents/HomescreenComponents/Topbar';
 import { useSelector } from 'react-redux';
-
+import Store from '../Redux/store';
 
 const initialImagesCategoriese = [
     {
@@ -39,7 +39,8 @@ function HomeScreen({ route, navigation }) {
     const [Categoriesearray, setCategoriesearray] = useState(initialImagesCategoriese);
 
     const [selectedcategory, setselectedcategory] = useState('Birthday Party')
-    const { memoriese } = useSelector(state => state.Reducer)
+    const { memoriese } = useSelector(state => Store.memoriese);
+    console.log(memoriese);
     return (
         <View contentContainerStyle={{ flexGrow: 2, paddingBottom: 0, marginBottom: 0 }} style={styles.container}>
 
