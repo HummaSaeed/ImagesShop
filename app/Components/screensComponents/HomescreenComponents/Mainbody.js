@@ -8,25 +8,28 @@ import { useSelector } from 'react-redux';
 
 
 
-function Mainbody({selectedcategory, memoriese, navigation}) {
+function Mainbody({selectedcategory,memoriese, navigation}) {
+ //   const { memoriese } = useSelector(state => state.Reducer);
+
     return (
+
         <View style={styles.mainbody}>
          <FlatList
                         data={memoriese}
                         numColumns={2}
                         showsHorizontalScrollIndicator={false}
-                        keyExtractor={(item, index) => String(index)}              
+                        keyExtractor={memoriese => memoriese.Date}
                         renderItem={({ item }) => {
-                       
                                 if(item.MemoryName == selectedcategory)
                                 {
+                                    console.log(item.MemoryName)
                                     return (
                                         <View style={{marginTop: 10,marginLeft: 12,maxHeight: 150, maxWidth: 150}}>
                                         <TouchableOpacity onPress={() => navigation.navigate('Screen5', {
                                             item : item
                                           })} >
                                         <Image 
-                                        source={item.image} style={{maxHeight: 150, maxWidth: 150}}  />
+                                        source={{uri:item.image}} style={{minHeight: 150, minWidth: 150}}  />
                                         </TouchableOpacity>
                                         </View>
                                     )

@@ -57,10 +57,9 @@ function HomeScreen({ route, navigation }) {
     console.log(memoriese);
     return (
         <View contentContainerStyle={{ flexGrow: 2, paddingBottom: 0, marginBottom: 0, marginTop:30 }} style={styles.container}>
-            <Text>{memoriese[0].MemoryName}</Text>
-            <Text>{memoriese[0].Location}</Text>
-            <Image source={memoriese[0].image} />
-            {/* {/* <Topbar navigation={navigation} />
+    
+        <Topbar navigation={navigation} />
+        {memoriese.length >0 ?
             <View style={styles.Categoriese}>
       
                 <FlatList
@@ -85,9 +84,17 @@ function HomeScreen({ route, navigation }) {
                     }}
                 />
             </View>
-                    
+                   :
+                   null} 
+                           {memoriese.length >0 ?
+
        <Mainbody selectedcategory={selectedcategory} memoriese={memoriese} navigation={navigation} />
-                    <Memoriese /> */}
+       :
+       null} 
+       {memoriese.length >0 ?
+         <Memoriese /> 
+         :
+                   null} 
 
         </View>
     );

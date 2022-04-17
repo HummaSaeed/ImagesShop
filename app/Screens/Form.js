@@ -52,7 +52,7 @@ function Form({ navigation }) {
         }
 
        dispatch(addMemory(new_Memory));
-       navigation.navigate('Home');
+       navigation.navigate('HomeScreen');
         console.log(dispatch(addMemory(new_Memory)));
     }
 
