@@ -27,11 +27,13 @@ function RegisterScreen({navigation}) {
         }
        } else{
            setflag(false);
-            await AsyncStorage.setItem('@storage_Key', userName);
-            await AsyncStorage.setItem('@storage_Key', email);
-            await AsyncStorage.setItem('@storage_Key', password);
+            await AsyncStorage.setItem('@storage_Key1', userName);
+            await AsyncStorage.setItem('@storage_Key2', email);
+            await AsyncStorage.setItem('@storage_Key3', password);
+            await AsyncStorage.setItem('@storage_Keylog1', email);
+            await AsyncStorage.setItem('@storage_Keylog2', password);
            console.log("Saved in local storage");
-         navigation.navigate('LoginScreen')
+         navigation.navigate('TabNavigator')
        }
     }
 
