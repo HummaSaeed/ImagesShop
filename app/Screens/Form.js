@@ -43,7 +43,7 @@ function Form({ navigation }) {
     const handleSubmit = () => {
 
         const new_Memory = {
-            //  id:shortid.generate(),
+             id:shortid.generate(),
             MemoryName: MemoryName,
             Date: Date,
             Location: Location,
@@ -78,6 +78,7 @@ function Form({ navigation }) {
 
                 {/* </View> */}
                 <AppTextInput
+                   
                     autoCapitalize="none"
                     autoCorrect={false}
                     placeholder="Memory Name"
@@ -86,6 +87,7 @@ function Form({ navigation }) {
                 />
                 <Text style={styles.text}>Date</Text>
                 <AppTextInput
+                
                     autoCapitalize="none"
                     autoCorrect={false}
                     placeholder="Date"

@@ -11,7 +11,6 @@ const inittialstate = {
     //{ category: 'empty', productname: 'empty', price: 'empty', quantity: 'empty', discription: 'empty'}
     memoriese: [ 
 ],
-   
 
 }
 
@@ -27,12 +26,10 @@ function Reducer(state = inittialstate, action) {
                   };
 
             }
-            // case REMOVE_MEMORY : 
-            // return {... state, memoriese : state.memoriese.filter((event) => parseInt(event.id) !== parseInt(action.payload))} 
-      
-    
-
-      
+            case REMOVE_MEMORY : 
+            return {... state,   memoriese: [state.memoriese.filter(
+                (memoriese) => memoriese.id != action.payload
+              )],} 
 
         default:
 

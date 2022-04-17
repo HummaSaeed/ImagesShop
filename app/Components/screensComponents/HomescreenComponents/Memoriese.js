@@ -1,77 +1,92 @@
-import React, {useState, useEffect} from 'react';
-import { View, StyleSheet, Text,Image, FlatList, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, Text, Image, FlatList, TouchableOpacity } from 'react-native';
 
 import miniimage from '../../icons/miniimage.jpeg'
 import mainimage from '../../icons/mainimage.jpg'
 import right from '../../../../assets/right.png';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Store from '../../../Store';
+import { removeMemory} from '../../../Redux/actions';
+import AppButtonSecondary from '../../AppButtonSecondary'
 
 
-function Memoriese({navigations}) {
-    const newmemoriesearray = useSelector(state => state); 
 
+
+function Memoriese({ navigations }) {
+    const newmemoriesearray = useSelector(state => state);
+    const dispatch = useDispatch();
     // const [memoriesearray, setmemoriesearray] = useState(initialmemoriesewithfriends);
     const { memoriese } = useSelector(state => state.Reducer);
     const [image, setimage] = useState()
 
-
+  const deleteelement = () =>{
+   try{ dispatch(removeMemory(memoriese.id))}catch{console.log("item not deleted")};
+    
+  }
     useEffect(() => {
-        if(memoriese.length > 0)
-        {
-           setimage(memoriese[0].image)
-        //   alert(memoriese)
+        if (memoriese.length > 0) {
+            setimage(memoriese[0].image)
+            //   alert(memoriese)
 
         }
 
     }, [])
-    
+
     return (
         <View style={styles.findmemoriese}>
-                <View style={styles.findmemoriese_top}>
-                    <View style={styles.findmemoriese_top_left}>
-                        <Text style={{fontWeight: 'bold'}}>Find Memoriese With Friends</Text>
-                    </View>
-                    <View style={styles.findmemoriese_top_right}>
-                        <Text style={{color: '#F76631'}}>see all</Text>
-                        <Image source={right} />
-                    </View>
+            <View style={styles.findmemoriese_top}>
+                <View style={styles.findmemoriese_top_left}>
+                    <Text style={{ fontWeight: 'bold' }}>Find Memoriese With Friends</Text>
                 </View>
-                <View style={styles.findmemoriese_flatlist}>
-                
-                    <FlatList
-                        data={memoriese}
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        keyExtractor={memoriese => memoriese.Date}
-                        renderItem={({ item }) => {
-                            return (
-                                <TouchableOpacity onPress={() => setimage(item.image)}>
-                                <Image source={{uri:item.image}} style={styles.memoriese_mini_image} />
-                                </TouchableOpacity>
-                            )
-                        }}
-                    />
-                </View>
-                <View style={styles.findmemoriese_image}>
-                    {
-                        image != '' ? 
-                        <Image source={{uri:image}} style={styles.memoriese_image} />
-:
-
-null 
-
-
-
-                    }
-
+                <View style={styles.findmemoriese_top_right}>
+                    <Text style={{ color: '#F76631' }}>see all</Text>
+                    <Image source={right} />
                 </View>
             </View>
+            <View style={styles.findmemoriese_flatlist}>
+
+                <FlatList
+                    data={memoriese}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    keyExtractor={memoriese => memoriese.Date}
+                    renderItem={({ item }) => {
+                        return (
+                            <View>
+                                <TouchableOpacity onPress={() => setimage(item.image)}>
+                                    <Image source={{ uri: item.image }} style={styles.memoriese_mini_image} />
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() => deleteelement()}>
+                                    <View style={{backgroundColor:'red'}}>
+                                        <Text style={styles.textbutton}>
+                                            Del
+                                        </Text>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
+                        )
+                    }}
+                />
+            </View>
+            <View style={styles.findmemoriese_image}>
+                {
+                    image != '' ?
+                        <Image source={{ uri: image }} style={styles.memoriese_image} />
+                        :
+
+                        null
+
+
+
+                }
+
+            </View>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
- 
+
     findmemoriese: {
         width: '100%',
         height: 900,
@@ -120,7 +135,7 @@ const styles = StyleSheet.create({
         width: '100%',
         borderRadius: 10,
         overflow: 'hidden'
-     
+
     },
 })
 export default Memoriese;
