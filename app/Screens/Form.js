@@ -51,8 +51,9 @@ function Form({ navigation }) {
             image: image
         }
 
-      //  dispatch(addMemory(new_Memory));
-        //console.log(dispatch(addMemory(new_Memory)));
+       dispatch(addMemory(new_Memory));
+       navigation.navigate('Home');
+        console.log(dispatch(addMemory(new_Memory)));
     }
 
     return (
@@ -107,7 +108,7 @@ function Form({ navigation }) {
                     textContentType="emailAddress"
                     onChangeText={userInputDescription => setDescription(userInputDescription)}
                 />
-                <TouchableOpacity onPress={handleSubmit()}>
+                <TouchableOpacity onPress={()=>handleSubmit()}>
                     <View style={[styles.button,]}>
                         <Text style={styles.textbutton}>
                             Add Memory

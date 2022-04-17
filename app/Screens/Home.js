@@ -32,6 +32,20 @@ const initialImagesCategoriese = [
     },
 
 ]
+const inittialstate = {
+    //{ category: 'empty', productname: 'empty', price: 'empty', quantity: 'empty', discription: 'empty'}
+    memoriese: [{
+
+        image: null,
+        email: '',
+        phoneno: null,
+        MemoryName: '',
+        Date: '',
+        Location: '',
+        Description: '',
+
+    },]
+}
 
 
 function HomeScreen({ route, navigation }) {
@@ -39,12 +53,14 @@ function HomeScreen({ route, navigation }) {
     const [Categoriesearray, setCategoriesearray] = useState(initialImagesCategoriese);
 
     const [selectedcategory, setselectedcategory] = useState('Birthday Party')
-    const { memoriese } = useSelector(state => Store.memoriese);
+    const { memoriese } = useSelector(state => state.Reducer);
     console.log(memoriese);
     return (
-        <View contentContainerStyle={{ flexGrow: 2, paddingBottom: 0, marginBottom: 0 }} style={styles.container}>
-
-            <Topbar navigation={navigation} />
+        <View contentContainerStyle={{ flexGrow: 2, paddingBottom: 0, marginBottom: 0, marginTop:30 }} style={styles.container}>
+            <Text>{memoriese[0].MemoryName}</Text>
+            <Text>{memoriese[0].Location}</Text>
+            <Image source={memoriese[0].image} />
+            {/* {/* <Topbar navigation={navigation} />
             <View style={styles.Categoriese}>
       
                 <FlatList
@@ -71,7 +87,7 @@ function HomeScreen({ route, navigation }) {
             </View>
                     
        <Mainbody selectedcategory={selectedcategory} memoriese={memoriese} navigation={navigation} />
-                    <Memoriese />
+                    <Memoriese /> */}
 
         </View>
     );
