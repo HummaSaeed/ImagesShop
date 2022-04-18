@@ -21,7 +21,7 @@ function Mainbody({selectedcategory,memoriese, navigation}) {
                         keyExtractor={memoriese => memoriese.id}
                         renderItem={({ item }) => {
                          
-                                if(item.MemoryName === selectedcategory)
+                            if(item.MemoryName != null)
                                 {
 
                                     return (
