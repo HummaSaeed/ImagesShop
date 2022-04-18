@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import HomeScreen from '../Screens/Home';
 import Account from '../Screens/Account';
+import React, { useState,useEffect } from 'react';
 import Detail from '../Screens/Detail';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
@@ -10,8 +11,16 @@ import Screen5 from '../Screens/Screen5';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Form from '../Screens/Form';
 import Svg, { Circle, Path } from "react-native-svg";
+import { reset } from '../Redux/actions';
+import { useDispatch } from 'react-redux';
 const Tab = createBottomTabNavigator();
-export default function TabNavigator({name}) {
+export default function TabNavigator({route}) {
+  const {resett} = route.params
+    const dispatch = useDispatch()
+  useEffect(() => {
+    
+  
+  });
 
   return (
 

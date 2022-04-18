@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     Topbar: {
         height: '20%',
         width: '100%',
-        marginTop: '5%',
+        marginTop: '10%',
         justifyContent: 'center',
         padding: '3%',
 

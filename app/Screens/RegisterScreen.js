@@ -2,16 +2,18 @@ import React, {useState} from 'react';
 import { View, StyleSheet, TextInput,Text, Button, Alert } from 'react-native';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-
+import {useDispatch } from 'react-redux';
 import AppButton from '../Components/AppButton';
 import AppColors from '../config/AppColors';
 import AppScreen from '../Components/AppScreen';
 import AppTextInput from '../Components/AppTextInput'
 import { TouchableOpacity,TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import LoginScreen from './LoginScreen';
+import { setUsername } from '../Redux/actions';
+import { reset } from '../Redux/actions';
 
 function RegisterScreen({navigation}) {
+    const dispatch = useDispatch()
     const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -19,22 +21,27 @@ function RegisterScreen({navigation}) {
     const [Login, setLogin] =useState(true);
 
     const handleSubmit =async() =>{
-        
-       if(!userName || !email || !password){
-           setflag(true);
-           {flag == true && (
-            <Alert> Please Fill All Fields</Alert>)
+      //  window.localStorage.clear();
+        if(!userName || !email || !password){
+            setflag(true);
+            {flag == true && (
+             <Alert> Please Fill All Fields</Alert>)
+         }
+        } else{
+            setflag(false);
+            dispatch(reset(''))
+             await AsyncStorage.setItem('@storage_Key1', userName);
+             await AsyncStorage.setItem('@storage_Key2', email);
+             await AsyncStorage.setItem('@storage_Key3', password);
+             await AsyncStorage.setItem('@storage_Keylog1', userName);
+             await AsyncStorage.setItem('@storage_Keylog2', email);
+             await AsyncStorage.setItem('@storage_Keylog3', password);
+ 
+            console.log("Saved in local storage");
+          navigation.navigate('TabNavigator',{resett:'reset'})
         }
-       } else{
-           setflag(false);
-            await AsyncStorage.setItem('@storage_Key1', userName);
-            await AsyncStorage.setItem('@storage_Key2', email);
-            await AsyncStorage.setItem('@storage_Key3', password);
-            await AsyncStorage.setItem('@storage_Keylog1', email);
-            await AsyncStorage.setItem('@storage_Keylog2', password);
-           console.log("Saved in local storage");
-         navigation.navigate('TabNavigator')
-       }
+      
+      
     }
 
     return (
@@ -84,7 +91,9 @@ function RegisterScreen({navigation}) {
                         </TouchableWithoutFeedback>
                <View style={{flexDirection: 'row', justifyContent:'center'}}>
                 <Text>Have an account? </Text>
+                <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
                 <Text style={{color:'#F76631'}}>Log in</Text>
+                </TouchableOpacity>
                 </View>
                 
                 </View> 

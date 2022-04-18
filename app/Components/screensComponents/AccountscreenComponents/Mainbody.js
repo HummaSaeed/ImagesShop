@@ -28,7 +28,7 @@ function Mainbody() {
                          
                               
                                return (
-                                   <Image source={memoriese.image} style={{marginLeft:12,marginTop: '2%',maxHeight: 100, maxWidth: 100}}  />
+                                   <Image source={{uri:item.image}} style={{marginLeft:12,marginTop: '2%',minHeight: 100, minWidth: 100}}  />
    
                                )
                          

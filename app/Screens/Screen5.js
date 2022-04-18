@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet,Image, Text, View, TouchableOpacity, ScrollView , ImageBackground, } from 'react-native';
-
+import { reset } from '../Redux/actions';
 import SocialMedia from '../Components/Social_media';
 import facebookmessenger from '../../assets/Facebook_Messenger.png';
 import facebook from '../../assets/Facebook.png';
@@ -20,7 +20,7 @@ function Screen5({navigation, route}) {
     const dispatch = useDispatch()
 
     const deleteelement = () =>{
-        try{ dispatch(removeMemory(item.id))}catch{console.log("item not deleted")};
+        try{ dispatch(removeMemory(item))}catch{console.log("item not deleted")};
          navigation.goBack()
        }
     return (
@@ -28,7 +28,7 @@ function Screen5({navigation, route}) {
         <ScrollView contentContainerStyle={{ flexGrow: 1,alignItems: 'center', justifyContent: 'center' }} style={styles.container}>
         <View style={{ width: 350, height: 460}}>
         <ImageBackground source={{uri:item.image}} resizeMode="cover" style={{flex: 1}}>
-     <View style={{flexDirection: 'row', justifyContent: 'space-between',padding: 20,height: 150}}>
+     <View style={{flexDirection: 'row', justifyContent: 'space-between',padding: 20,marginTop: '5%',height: 150}}>
      <TouchableOpacity style={styles.moveback} onPress={() => navigation.goBack()}>
                 <Icon
                     name="left"

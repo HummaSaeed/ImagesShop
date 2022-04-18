@@ -51,27 +51,23 @@ function LoginScreen({navigation}) {
   const [home, setHome] = useState(true);
 
     const handleLogin = async() => {
-        let name = await AsyncStorage.getItem('@storage_Key1');
+        let name = await AsyncStorage.getItem('@storage_Keylog1');
 
-        let mail = await AsyncStorage.getItem('@storage_Key2');
-        let pass = await AsyncStorage.getItem('@storage_Key3');
-        let loginmail = await AsyncStorage.getItem('@storage_Keylog1');
-        let loginpass = await AsyncStorage.getItem('@storage_Keylog2');
-        dispatch(setUsername(name))
+        let mail = await AsyncStorage.getItem('@storage_Keylog2');
+        let pass = await AsyncStorage.getItem('@storage_Keylog3');
         console.log(mail);
         console.log(pass);
-        // console.log(name);
+        console.log(name);
 
     
         if (!logemail || !logpassword) {
           setFlag(true);
           console.log("EMPTY");
-        } else if ((logpassword !== loginpass || logemail !== loginmail)) {
+        } else if (logpassword !== pass || logemail !== mail) {
           setFlag(true);
-          console.log("login password is not equal");
-          console.log(loginmail,loginpass)
+          console.log("login password is not equal")
         } else {
-            navigation.navigate('TabNavigator',{name:name})
+            navigation.navigate('TabNavigator',{resett:'no res'})
 
           setHome(!home);
           setFlag(false);
@@ -119,7 +115,9 @@ function LoginScreen({navigation}) {
                         </TouchableOpacity>
                 <View style={{flexDirection: 'row', justifyContent:'center'}}>
                 <Text>Don't have Account </Text>
+                <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
                 <Text style={{color:'#F76631'}}>Sign up</Text>
+                </TouchableOpacity>
                 </View>
                 </View> 
                 

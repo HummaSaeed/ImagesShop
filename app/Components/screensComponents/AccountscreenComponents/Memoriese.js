@@ -18,7 +18,7 @@ function Memoriese({ navigation }) {
     const handleSubmit = async () => {
         
             if( AsyncStorage.removeItem('@storage_Key2') &&AsyncStorage.removeItem('@storage_Key3')){
-                navigation.navigate('RegisterScreen')
+                navigation.navigate('LoginScreen')
                 console.log("you have logout");
             }
             
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: 'black',
         marginTop: '2%',
-        height: 230,
+        height: 215,
         width: '100%',
         borderTopRightRadius: 30,
         borderTopLeftRadius: 30,

@@ -1,9 +1,11 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
-
+import { useSelector } from 'react-redux';
 import logo from '../../../../assets/logo.jpeg'
 
-function Topbar({navigation,name}) {
+function Topbar({navigation}) {
+    const { name } = useSelector(state => state.Reducer);
+
     return (
         <View style={styles.Topbar}>
             <View style={styles.Topbar_left}>
