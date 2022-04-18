@@ -56,13 +56,7 @@ function Memoriese({ navigations }) {
                                 <TouchableOpacity onPress={() => setimage(item.image)}>
                                     <Image source={{ uri: item.image }} style={styles.memoriese_mini_image} />
                                 </TouchableOpacity>
-                                <TouchableOpacity onPress={() => deleteelement()}>
-                                    <View style={{backgroundColor:'red'}}>
-                                        <Text style={styles.textbutton}>
-                                            Del
-                                        </Text>
-                                    </View>
-                                </TouchableOpacity>
+                               
                             </View>
                         )
                     }}

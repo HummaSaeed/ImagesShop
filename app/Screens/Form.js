@@ -10,11 +10,14 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Icon, withBadge } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
 import { addMemory } from './../Store';
+import { removeMemory } from '../Redux/actions';
 import shortid from 'shortid';
 import { useSelector } from 'react-redux';
 
+import uuid from 'react-native-uuid';
 
 function Form({ navigation }) {
+    const { memoriese } = useSelector(state => state.Reducer);
 
     const dispatch = useDispatch();
     const [MemoryName, setMemoryName] = useState();
@@ -22,7 +25,7 @@ function Form({ navigation }) {
     const [Location, setLocation] = useState();
     const [Description, setDescription] = useState();
     const [image, setImage] = useState('');
-
+const [id, setid] = useState(parseInt(memoriese.length)+1)
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -39,11 +42,14 @@ function Form({ navigation }) {
         }
     };
 
+    const deleteelement = () =>{
+       // try{ dispatch(removeMemory(id))}catch{console.log("item not deleted")};
 
+       }
     const handleSubmit = () => {
 
         const new_Memory = {
-             id:shortid.generate(),
+             id:parseInt(memoriese.length),
             MemoryName: MemoryName,
             Date: Date,
             Location: Location,
@@ -52,8 +58,9 @@ function Form({ navigation }) {
         }
 
        dispatch(addMemory(new_Memory));
-       navigation.navigate('HomeScreen');
-        console.log(dispatch(addMemory(new_Memory)));
+        console.log(new_Memory);
+      navigation.navigate('HomeScreen');
+
     }
 
     return (

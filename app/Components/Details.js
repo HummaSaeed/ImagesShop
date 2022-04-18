@@ -6,7 +6,7 @@ import calendar from '../../assets/calendar.png'
 
 function Details({item}) {
     return (
-        <View style={{height:190, borderRadius:20,justifyContent:'flex-start',}}>
+        <View style={{height:130, width: '90%',borderRadius:20,justifyContent:'flex-start',}}>
             <Text style={styles.head}>{item.MemoryName}</Text>
             <View style={{flexDirection:'row', alignItems: 'center'}}>
             <Image source={calendar} />

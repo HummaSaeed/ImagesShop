@@ -11,7 +11,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Form from '../Screens/Form';
 import Svg, { Circle, Path } from "react-native-svg";
 const Tab = createBottomTabNavigator();
-export default function TabNavigator() {
+export default function TabNavigator({name}) {
 
   return (
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { View, StyleSheet, Text, Image, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 
 import Mainbody from '../Components/screensComponents/HomescreenComponents/Mainbody';
@@ -8,6 +8,7 @@ import Memoriese from '../Components/screensComponents/HomescreenComponents/Memo
 import Topbar from '../Components/screensComponents/HomescreenComponents/Topbar';
 import { useSelector } from 'react-redux';
 import Store from '../Redux/store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const initialImagesCategoriese = [
     {
@@ -49,16 +50,22 @@ const inittialstate = {
 
 
 function HomeScreen({ route, navigation }) {
+    useEffect(() => {
+        // Update the document title using the browser API
+        let nam = AsyncStorage.getItem('@storage_Key1');
+//        alert(nam)
+    });
+
 
     const [Categoriesearray, setCategoriesearray] = useState(initialImagesCategoriese);
 
     const [selectedcategory, setselectedcategory] = useState('Birthday Party')
-    const { memoriese } = useSelector(state => state.Reducer);
-    console.log(memoriese);
+    const { memoriese,name } = useSelector(state => state.Reducer);
+   // console.log(memoriese);
     return (
         <View contentContainerStyle={{ flexGrow: 2, paddingBottom: 0, marginBottom: 0, marginTop:30 }} style={styles.container}>
     
-        <Topbar navigation={navigation} />
+        <Topbar navigation={navigation} name={name} />
         {memoriese.length >0 ?
             <View style={styles.Categoriese}>
       

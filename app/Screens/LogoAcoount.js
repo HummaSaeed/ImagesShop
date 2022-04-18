@@ -11,13 +11,13 @@ import Topbar from '../Components/screensComponents/AccountscreenComponents/Topb
 
 
 
-function LogoAccount({navigation}) {
-
+function LogoAccount({route,navigation}) {
+const {name} = route.params
 
     return (
         <View style={styles.container}>
         
-            <Topbar navigation={navigation} />
+            <Topbar navigation={navigation} name={name} />
             <Mainbody />
             <Memoriese />
 

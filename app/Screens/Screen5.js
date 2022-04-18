@@ -15,12 +15,19 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function Screen5({navigation, route}) {
     const {item} = route.params
+    const { memoriese,name } = useSelector(state => state.Reducer);
+
     const dispatch = useDispatch()
+
+    const deleteelement = () =>{
+        try{ dispatch(removeMemory(item.id))}catch{console.log("item not deleted")};
+         navigation.goBack()
+       }
     return (
         
         <ScrollView contentContainerStyle={{ flexGrow: 1,alignItems: 'center', justifyContent: 'center' }} style={styles.container}>
         <View style={{ width: 350, height: 460}}>
-        <ImageBackground source={item.image} resizeMode="cover" style={{flex: 1}}>
+        <ImageBackground source={{uri:item.image}} resizeMode="cover" style={{flex: 1}}>
      <View style={{flexDirection: 'row', justifyContent: 'space-between',padding: 20,height: 150}}>
      <TouchableOpacity style={styles.moveback} onPress={() => navigation.goBack()}>
                 <Icon
@@ -31,7 +38,7 @@ function Screen5({navigation, route}) {
 
                 />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.moveback} onPress={() => dispatch(removeMemory(item.id))}>
+            <TouchableOpacity style={styles.moveback} onPress={() => deleteelement()}>
 
             <Icon
                     name="delete"

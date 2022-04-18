@@ -2,12 +2,14 @@ import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 
 import logo from '../../../../assets/logo.jpeg'
-
+import { useSelector } from 'react-redux';
 import { Icon, withBadge } from 'react-native-elements'
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 function Topbar({navigation}) {
+    const { memoriese,name } = useSelector(state => state.Reducer);
+
     return (
         <View style={styles.Topbar}>
             <TouchableOpacity style={styles.moveback} onPress={() => navigation.goBack()}>
@@ -26,7 +28,7 @@ function Topbar({navigation}) {
 
                     </View>
                     <View style={styles.text}>
-                        <Text style={{ fontWeight: 'bold' }}>Robert Fox</Text>
+                        <Text style={{ fontWeight: 'bold' }}>{name.name}</Text>
                         <Text>Joined 16 March 2021</Text>
                     </View>
 

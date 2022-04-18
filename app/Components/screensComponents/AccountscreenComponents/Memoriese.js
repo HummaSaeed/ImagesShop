@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, Image, FlatList } from 'react-native';
+import { View, StyleSheet, Text, Image, FlatList ,TouchableOpacity} from 'react-native';
 import { Icon, withBadge } from 'react-native-elements'
 
 import mail from '../../../../assets/mail.png'

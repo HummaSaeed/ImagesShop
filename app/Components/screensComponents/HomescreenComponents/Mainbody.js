@@ -18,13 +18,14 @@ function Mainbody({selectedcategory,memoriese, navigation}) {
                         data={memoriese}
                         numColumns={2}
                         showsHorizontalScrollIndicator={false}
-                        keyExtractor={memoriese => memoriese.Date}
+                        keyExtractor={memoriese => memoriese.id}
                         renderItem={({ item }) => {
-                                if(item.MemoryName == selectedcategory)
+                         
+                                if(item.MemoryName === selectedcategory)
                                 {
-                                    console.log(item.MemoryName)
+
                                     return (
-                                        <View style={{marginTop: 10,marginLeft: 12,maxHeight: 150, maxWidth: 150}}>
+                                        <View style={{marginTop: 10,marginLeft: 12,Height: 150, Width: 150}}>
                                         <TouchableOpacity onPress={() => navigation.navigate('Screen5', {
                                             item : item
                                           })} >

@@ -6,8 +6,8 @@ import {Formik} from 'formik';
 import * as Yup from 'yup';
 import Memories1 from '../../assets/Memories1.png';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-
+import { setUsername } from '../Redux/actions';
+import { useDispatch } from 'react-redux';
 
 import AppButton from '../Components/AppButton';
 import AppColors from '../config/AppColors';
@@ -17,7 +17,6 @@ import AppText from '../Components/AppText'
 import DataManager from '../config/DataManager';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Home from './Home'
-
 
 const schema = Yup.object().shape(
     {
@@ -43,6 +42,8 @@ const createUser = ({email}) => {
 }
 
 function LoginScreen({navigation}) {
+    const dispatch =useDispatch()
+
     const [logemail, setlogEmail] = useState();
     const [logpassword, setlogPassword] = useState();
     const [flag, setFlag] = useState(false);
@@ -50,11 +51,15 @@ function LoginScreen({navigation}) {
   const [home, setHome] = useState(true);
 
     const handleLogin = async() => {
-        
+        let name = await AsyncStorage.getItem('@storage_Key1');
+
         let mail = await AsyncStorage.getItem('@storage_Key2');
         let pass = await AsyncStorage.getItem('@storage_Key3');
+        dispatch(setUsername(name))
         console.log(mail);
         console.log(pass);
+        console.log(name);
+
     
         if (!logemail || !logpassword) {
           setFlag(true);
@@ -63,7 +68,7 @@ function LoginScreen({navigation}) {
           setFlag(true);
           console.log("login password is not equal")
         } else {
-            navigation.navigate('TabNavigator')
+            navigation.navigate('TabNavigator',{name:name})
 
           setHome(!home);
           setFlag(false);

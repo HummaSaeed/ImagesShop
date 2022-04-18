@@ -1,4 +1,6 @@
 export const ADD_MEMORY = "ADD_MEMORY"
+export const ADD_NAME = "ADD_NAME"
+
 export const REMOVE_MEMORY = "REMOVE_MEMORY"
 
 export const setMemory = memoriese => dispatch => {
@@ -7,6 +9,16 @@ export const setMemory = memoriese => dispatch => {
         type: ADD_MEMORY,
         payload: {
             memoriese: memoriese,
+         
+        }
+    });
+}
+export const setUsername = name => dispatch => {
+
+    dispatch({
+        type: ADD_NAME,
+        payload: {
+            name: name,
          
         }
     });

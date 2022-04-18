@@ -19,7 +19,7 @@ function Screen1({navigation, route}) {
         <Pagination />
         <View style={{flexDirection:'row'}}>
        <AppButtonSecondary title="Skip" onPress={(() => navigation.navigate('RegisterScreen'))}/>
-       <AppButton title="Continue" width="150" onPress={(() => navigation.navigate('TabNavigator'))}/>
+       <AppButton title="Continue" width="150" onPress={(() => navigation.navigate('Screen2'))}/>
        </View>
        </View>
        </View>
