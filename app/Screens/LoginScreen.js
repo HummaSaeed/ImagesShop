@@ -55,18 +55,21 @@ function LoginScreen({navigation}) {
 
         let mail = await AsyncStorage.getItem('@storage_Key2');
         let pass = await AsyncStorage.getItem('@storage_Key3');
+        let loginmail = await AsyncStorage.getItem('@storage_Keylog1');
+        let loginpass = await AsyncStorage.getItem('@storage_Keylog2');
         dispatch(setUsername(name))
         console.log(mail);
         console.log(pass);
-        console.log(name);
+        // console.log(name);
 
     
         if (!logemail || !logpassword) {
           setFlag(true);
           console.log("EMPTY");
-        } else if (logpassword !== pass || logemail !== mail) {
+        } else if ((logpassword !== loginpass || logemail !== loginmail)) {
           setFlag(true);
-          console.log("login password is not equal")
+          console.log("login password is not equal");
+          console.log(loginmail,loginpass)
         } else {
             navigation.navigate('TabNavigator',{name:name})
 

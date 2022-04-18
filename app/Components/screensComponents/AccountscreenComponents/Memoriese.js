@@ -8,17 +8,20 @@ import settings from '../../../../assets/settings.png'
 import { useSelector } from 'react-redux';
 import Store from '../../../Store';
 import RegisterScreen from '../../../Screens/RegisterScreen'
+import { NavigationContainer } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-function Memoriese() {
+function Memoriese({ navigation }) {
 
-  const [logout, setlogout] = useState(true)
+  const [logout, setlogout] = useState(true);
+  const { memoriese } = useSelector(state => state.Reducer);
     const handleSubmit = async () => {
-        try {
-            await AsyncStorage.removeItem('@storage_Key2');
+        
+            if( AsyncStorage.removeItem('@storage_Key2') &&AsyncStorage.removeItem('@storage_Key3')){
+                navigation.navigate('RegisterScreen')
+                console.log("you have logout");
+            }
             
-        } catch {
-            console.log("not logout")
-        }
     }
     return (
         <View style={styles.container}>
@@ -27,12 +30,12 @@ function Memoriese() {
                 <View style={styles.containeritems}>
                     <Image source={mail} />
 
-                    <Text style={{ color: 'white', marginLeft: '3%' }}>humma786</Text>
+                    <Text style={{ color: 'white', marginLeft: '3%' }}>E-mail address</Text>
 
                 </View>
                 <View style={styles.containeritems}>
                     <Image source={contact} />
-                    <Text style={{ color: 'white', marginLeft: '3%' }}>64373</Text>
+                    <Text style={{ color: 'white', marginLeft: '3%' }}>Phone number is:</Text>
                 </View>
 
             </View>

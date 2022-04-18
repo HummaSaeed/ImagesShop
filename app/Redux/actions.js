@@ -2,6 +2,7 @@ export const ADD_MEMORY = "ADD_MEMORY"
 export const ADD_NAME = "ADD_NAME"
 
 export const REMOVE_MEMORY = "REMOVE_MEMORY"
+export const EDIT_MEMORY = "EDIT_MEMORY"
 
 export const setMemory = memoriese => dispatch => {
 

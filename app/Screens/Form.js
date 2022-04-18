@@ -42,10 +42,6 @@ const [id, setid] = useState(parseInt(memoriese.length)+1)
         }
     };
 
-    const deleteelement = () =>{
-       // try{ dispatch(removeMemory(id))}catch{console.log("item not deleted")};
-
-       }
     const handleSubmit = () => {
 
         const new_Memory = {
@@ -65,8 +61,10 @@ const [id, setid] = useState(parseInt(memoriese.length)+1)
 
     return (
         <AppScreen style={styles.container}>
-            <View style={styles.Topbar}>
-                <TouchableOpacity style={styles.moveback} onPress={() => navigation.goBack()}>
+            {/* <View style={styles.Topbar}>
+               
+            </View> */}
+            <TouchableOpacity style={styles.moveback} onPress={() => navigation.goBack()}>
                     <Icon
                         name="left"
                         type="antdesign"
@@ -74,8 +72,7 @@ const [id, setid] = useState(parseInt(memoriese.length)+1)
                         size={15}
                     />
                 </TouchableOpacity>
-            </View>
-            <View><Text style={{ fontWeight: 'bold', fontSize: 20, marginTop: 20, justifyContent: 'center', marginLeft: 70, width: 150 }}>Add A Memory</Text></View>
+            <View><Text style={{ fontWeight: 'bold', fontSize: 20, justifyContent: 'center', marginLeft: 70, width: 150 }}>Add A Memory</Text></View>
             <Button title="Pick an image from camera roll" onPress={pickImage} />
                    {/* {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}*/}
             <View style={styles.textInputContainer}>
@@ -155,6 +152,16 @@ const styles = StyleSheet.create({
         color: AppColors.white,
         fontSize: 16,
         fontWeight: 'bold',
+    },
+    moveback: {
+        width: '7%',
+        height: '23%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 30,
+        borderWidth: 1.5,
+        borderColor: 'black'
+
     },
     button: {
         backgroundColor: AppColors.primaryColor,
