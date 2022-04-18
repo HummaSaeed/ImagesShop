@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image, FlatList } from 'react-native';
+import { View, StyleSheet, Text, Image, FlatList, SafeAreaView } from 'react-native';
 
 import rectangle1 from '../../icons/rectangle1.jpg'
 import rectangle2 from '../../icons/rectangle2.jpg'
@@ -18,7 +18,7 @@ function Mainbody() {
     const { memoriese } = useSelector(state => state.Reducer)
 
     return (
-        <View style={styles.mainbody}>
+        <SafeAreaView style={styles.mainbody}>
         <FlatList
                        data={memoriese}
                        numColumns={3}
@@ -36,7 +36,7 @@ function Mainbody() {
                        }}
                    />
 
-   </View> 
+   </SafeAreaView> 
     );
 }
 

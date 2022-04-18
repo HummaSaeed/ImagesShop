@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, Image, FlatList, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, Image, FlatList, TouchableOpacity, SafeAreaView } from 'react-native';
 
 import miniimage from '../../icons/miniimage.jpeg'
 import mainimage from '../../icons/mainimage.jpg'
@@ -33,7 +33,7 @@ function Memoriese({ navigations }) {
     }, [])
 
     return (
-        <View style={styles.findmemoriese}>
+        <SafeAreaView style={styles.findmemoriese}>
             <View style={styles.findmemoriese_top}>
                 <View style={styles.findmemoriese_top_left}>
                     <Text style={{ fontWeight: 'bold' }}>Find Memoriese With Friends</Text>
@@ -75,7 +75,7 @@ function Memoriese({ navigations }) {
                 }
 
             </View>
-        </View>
+        </SafeAreaView>
     );
 }
 

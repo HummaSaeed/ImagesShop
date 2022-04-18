@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, Image, FlatList ,TouchableOpacity} from 'react-native';
+import { View, StyleSheet, Text, Image, FlatList ,TouchableOpacity, SafeAreaView} from 'react-native';
 import { Icon, withBadge } from 'react-native-elements'
 
 import mail from '../../../../assets/mail.png'
@@ -24,7 +24,7 @@ function Memoriese({ navigation }) {
             
     }
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             {logout ? <View>
             <View style={styles.containerTop}>
                 <View style={styles.containeritems}>
@@ -61,7 +61,7 @@ function Memoriese({ navigation }) {
             </View></View> :
             <RegisterScreen />}
 
-        </View>
+        </SafeAreaView>
     );
 }
 

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, StyleSheet, TextInput,Text, Button, Alert } from 'react-native';
+import { View, StyleSheet, TextInput,Text, Button, Alert, SafeAreaView } from 'react-native';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useDispatch } from 'react-redux';
@@ -48,7 +48,7 @@ function RegisterScreen({navigation}) {
         
         <AppScreen style={styles.container}>
          
-                <View>
+                <SafeAreaView>
                 <View><Text style={{fontWeight: 'bold', fontSize:20, marginTop:100, width:150}}>Sign Up To Continue</Text></View>
                 <View style={styles.textInputContainer}>  
                 <Text style={styles.text}>Full Name</Text>
@@ -97,7 +97,7 @@ function RegisterScreen({navigation}) {
                 </View>
                 
                 </View> 
-                </View>
+                </SafeAreaView>
              
         </AppScreen>
     );

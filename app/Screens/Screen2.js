@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet,Image, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet,Image, Text, View, TouchableOpacity, SafeAreaView } from 'react-native';
 import AppButton from '../Components/AppButton'
 import AppColors from '../config/AppColors';
 import image2 from '../../assets/M2.png';
@@ -8,7 +8,7 @@ import Pagination from '../Components/Pagination';
 
 function LoginScreen({navigation, route}) {
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
         <Image source={image2} style={{ width: 156, height: 214 }} /> 
         <Text style={styles.text}>Do You remember? </Text>
         <View><Text style={{width: 305, textAlign: 'center', color: '#667085'}}>When was the last time you enjoyed precious moments with your son? we remind you that for happiness</Text></View>
@@ -19,7 +19,7 @@ function LoginScreen({navigation, route}) {
        <AppButton title="Continue" width="150" onPress={(() => navigation.navigate('Screen3'))}/>
        </View>
        </View>
-       </View>
+       </SafeAreaView>
     );
 }
 

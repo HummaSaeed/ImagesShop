@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, View,Text , Image} from 'react-native';
+import { StyleSheet, View,Text , Image, SafeAreaView} from 'react-native';
 
 import location from '../../assets/location.png'
 import calendar from '../../assets/calendar.png'
 
 function Details({item}) {
     return (
-        <View style={{height:130, width: '90%',borderRadius:20,justifyContent:'flex-start',}}>
+        <SafeAreaView style={{height:130, width: '90%',borderRadius:20,justifyContent:'flex-start',}}>
             <Text style={styles.head}>{item.MemoryName}</Text>
             <View style={{flexDirection:'row', alignItems: 'center'}}>
             <Image source={calendar} />
@@ -20,7 +20,7 @@ function Details({item}) {
             <Text style={{marginTop:30, margin:5, color: "#475467"}}>
 {item.Description}
             </Text>
-            </View>
+            </SafeAreaView>
       
     );
 }

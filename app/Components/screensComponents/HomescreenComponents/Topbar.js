@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableOpacity, SafeAreaView } from 'react-native';
 import { useSelector } from 'react-redux';
 import logo from '../../../../assets/logo.jpeg'
 
@@ -7,7 +7,7 @@ function Topbar({navigation}) {
     const { name } = useSelector(state => state.Reducer);
 
     return (
-        <View style={styles.Topbar}>
+        <SafeAreaView style={styles.Topbar}>
             <View style={styles.Topbar_left}>
                 <Text>{name.name}</Text>
                 <Text style={{ fontWeight: 'bold' }}>Relive your best moments</Text>
@@ -15,7 +15,7 @@ function Topbar({navigation}) {
             <TouchableOpacity style={styles.Topbar_right} onPress={() =>navigation.navigate('LogoAccount',{name:name})}>
                 <Image style={styles.Logo} source={logo} />
             </TouchableOpacity>
-        </View>
+        </SafeAreaView>
     );
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text,Image,FlatList, TouchableOpacity  } from 'react-native';
+import { View, StyleSheet, Text,Image,FlatList, TouchableOpacity, SafeAreaView  } from 'react-native';
 
 import rectangle1 from '../../icons/rectangle1.jpg'
 import rectangle2 from '../../icons/rectangle2.jpg'
@@ -13,7 +13,7 @@ function Mainbody({selectedcategory,memoriese, navigation}) {
 
     return (
 
-        <View style={styles.mainbody}>
+        <SafeAreaView style={styles.mainbody}>
          <FlatList
                         data={memoriese}
                         numColumns={2}
@@ -44,7 +44,7 @@ function Mainbody({selectedcategory,memoriese, navigation}) {
                         }
                     />
 
-    </View>  
+    </SafeAreaView>  
     );
 }
 

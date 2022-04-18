@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet,Image, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet,Image, Text, View, TouchableOpacity, SafeAreaView } from 'react-native';
 import AppButton from '../Components/AppButton';
 import AppButtonSecondary from '../Components/AppButtonSecondary';
 import AppColors from '../config/AppColors';
@@ -10,7 +10,7 @@ import Pagination from '../Components/Pagination';
 
 function Screen1({navigation, route}) {
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
         <Image source={image1} style={{ width: 300, height: 214}} /> 
         <Text style={styles.text}>Has got some moments? </Text>
         <View><Text style={{width: 305, textAlign: 'center', color: '#667085'}}>Upload your moments on our app and we'll remind you of those moments</Text></View>
@@ -22,7 +22,7 @@ function Screen1({navigation, route}) {
        <AppButton title="Continue" width="150" onPress={(() => navigation.navigate('Screen2'))}/>
        </View>
        </View>
-       </View>
+       </SafeAreaView>
     );
 }
 

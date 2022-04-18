@@ -1,6 +1,6 @@
 
 import React, {useState} from 'react';
-import { View, StyleSheet, TextInput, Text, Image} from 'react-native';
+import { View, StyleSheet, TextInput, Text, Image,SafeAreaView} from 'react-native';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
@@ -77,7 +77,7 @@ function LoginScreen({navigation}) {
 
     return (
         <AppScreen style={styles.container}>
-          <View>
+          <SafeAreaView>
                  <View style={{backgroundColor:'#42C2FF33', width: 450, height: 319,  justifyContent: 'center'}}>
                     <Image source={Memories1} style={{ width: 250, height: 242, marginLeft: 50, marginTop:10}}/>
                 </View>
@@ -122,7 +122,7 @@ function LoginScreen({navigation}) {
                 </View> 
                 
 
-                 </View>
+                 </SafeAreaView>
         </AppScreen>  
     );
 }

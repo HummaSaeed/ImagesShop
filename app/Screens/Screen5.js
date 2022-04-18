@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet,Image, Text, View, TouchableOpacity, ScrollView , ImageBackground, } from 'react-native';
+import { StyleSheet,Image, Text, View, TouchableOpacity, ScrollView , ImageBackground, SafeAreaView, } from 'react-native';
 import { reset } from '../Redux/actions';
 import SocialMedia from '../Components/Social_media';
 import facebookmessenger from '../../assets/Facebook_Messenger.png';
@@ -24,7 +24,7 @@ function Screen5({navigation, route}) {
          navigation.goBack()
        }
     return (
-        
+        <SafeAreaView>
         <ScrollView contentContainerStyle={{ flexGrow: 1,alignItems: 'center', justifyContent: 'center' }} style={styles.container}>
         <View style={{ width: 350, height: 460}}>
         <ImageBackground source={{uri:item.image}} resizeMode="cover" style={{flex: 1}}>
@@ -66,6 +66,7 @@ function Screen5({navigation, route}) {
         </View>
         </View>
        </ScrollView>
+       </SafeAreaView>
        
     );
 }

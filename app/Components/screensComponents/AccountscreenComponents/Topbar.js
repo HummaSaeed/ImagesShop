@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableOpacity, SafeAreaView } from 'react-native';
 
 import logo from '../../../../assets/logo.jpeg'
 import { useSelector } from 'react-redux';
@@ -11,7 +11,7 @@ function Topbar({navigation}) {
     const { memoriese,name } = useSelector(state => state.Reducer);
 
     return (
-        <View style={styles.Topbar}>
+        <SafeAreaView style={styles.Topbar}>
             <TouchableOpacity style={styles.moveback} onPress={() => navigation.goBack()}>
                 <Icon
                     name="left"
@@ -40,7 +40,7 @@ function Topbar({navigation}) {
                 </View>
             </View>
 
-        </View>
+        </SafeAreaView>
     );
 }
 

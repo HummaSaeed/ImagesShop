@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import { View, StyleSheet, Text, Image, FlatList, TouchableOpacity, ScrollView } from 'react-native';
+import { View, StyleSheet, Text, Image, FlatList, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
 
 import Mainbody from '../Components/screensComponents/HomescreenComponents/Mainbody';
 
@@ -63,6 +63,7 @@ function HomeScreen({ route, navigation }) {
     const { memoriese,name } = useSelector(state => state.Reducer);
    // console.log(memoriese);
     return (
+        <SafeAreaView style={styles.container}>
         <View contentContainerStyle={{ flexGrow: 2, paddingBottom: 0, marginBottom: 0, marginTop:30 }} style={styles.container}>
     
         <Topbar navigation={navigation} name={name} />
@@ -91,6 +92,7 @@ function HomeScreen({ route, navigation }) {
                     }}
                 />
             </View>
+            
                    :
                    null} 
                            {memoriese.length >0 ?
@@ -104,6 +106,7 @@ function HomeScreen({ route, navigation }) {
                    null} 
 
         </View>
+        </SafeAreaView>
     );
 }
 
