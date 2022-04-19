@@ -13,7 +13,7 @@ class Pagination extends Component {
   render() {
     return (
        
-      <Dots length={3} active={active} paddingVertical={2} activeColor={'#F76631'}/>
+      <Dots length={3} active={this.state.active} paddingVertical={2} activeColor={'#F76631'}/>
       
     )
   }

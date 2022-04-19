@@ -67,7 +67,7 @@ function HomeScreen({ route, navigation }) {
         <View contentContainerStyle={{ flexGrow: 2, paddingBottom: 0, marginBottom: 0, marginTop:30 }} style={styles.container}>
     
         <Topbar navigation={navigation} name={name} />
-        {memoriese.length >0 ?
+        {memoriese.length >= 0 ?
             <View style={styles.Categoriese}>
       
                 <FlatList
@@ -86,7 +86,6 @@ function HomeScreen({ route, navigation }) {
                                 </TouchableOpacity>
 
                             </View>
-
 
                         )
                     }}

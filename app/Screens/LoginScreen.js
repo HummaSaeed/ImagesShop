@@ -1,6 +1,6 @@
 
 import React, {useState} from 'react';
-import { View, StyleSheet, TextInput, Text, Image,SafeAreaView} from 'react-native';
+import { View, StyleSheet, TextInput, Text, Image,SafeAreaView, ToastAndroid} from 'react-native';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
@@ -63,9 +63,10 @@ function LoginScreen({navigation}) {
         if (!logemail || !logpassword) {
           setFlag(true);
           console.log("EMPTY");
+          ToastAndroid.show('Username or Password is Empty!', ToastAndroid.SHORT);
         } else if (logpassword !== pass || logemail !== mail) {
           setFlag(true);
-          console.log("login password is not equal")
+          ToastAndroid.show('Username or Password is incorrect!', ToastAndroid.SHORT);
         } else {
             navigation.navigate('TabNavigator',{resett:'no res'})
 
